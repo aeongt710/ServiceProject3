@@ -2,3 +2,224 @@
 @model ServiceProject3.Pages.Account.IndexModel
 @{
 }
+
+    <div class="main_container">
+    <div class="content">
+        <div class="cards">
+            <div class="card">
+                <div class="box">
+                    <h1 class="h1_number">@Model.Service.Count()</h1>
+                    <h3 class="h3_heading">Services</h3>
+                </div>
+                <div class="icon-case">
+                    <img src="students.png" alt="">
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <h1 class="h1_number">53</h1>
+                    <h3 class="h3_heading">Teachers</h3>
+                </div>
+                <div class="icon-case">
+                    <img src="teachers.png" alt="">
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <h1 class="h1_number">5</h1>
+                    <h3 class="h3_heading">Schools</h3>
+                </div>
+                <div class="icon-case">
+                    <img src="schools.png" alt="">
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <h1 class="h1_number">350000</h1>
+                    <h3 class="h3_heading">Income</h3>
+                </div>
+                <div class="icon-case">
+                    <img src="income.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+
+</div>
+
+<style>
+    * {
+    /* margin: 0;
+    padding: 0;
+    box-sizing: border-box; */
+    font-family: 'Poppins', sans-serif;
+}
+
+.h1_number {
+    color: #444;
+}
+
+.h3_heading {
+    color: #999;
+}
+
+
+
+
+
+
+.side-menu
+ .main_container {
+    position: absolute;
+    right: 0;
+    width: 80vw;
+    height: 100vh;
+    background: #f1f1f1;
+}
+
+.main_container .header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80vw;
+    height: 10vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.main_container .header  {
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.main_container .header .nav .search {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+}
+
+/* .main_container .header .nav .search input[type=text] {
+    border: none;
+    background: #f1f1f1;
+    padding: 10px;
+    width: 50%;
+} */
+
+/* .main_container .header .nav .search button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+/* .main_container .header .nav .search button img {
+    width: 30px;
+    height: 30px;
+} */
+
+/* .main_container .header .nav .user {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} */
+/* 
+.main_container .header .nav .user img {
+    width: 40px;
+    height: 40px;
+}
+
+.main_container .header .nav .user .img-case {
+    position: relative;
+    width: 50px;
+    height: 50px;
+} */
+
+/* .main_container .header .nav .user .img-case img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+} */
+
+.main_container .content {
+    position: relative;
+    background: #f1f1f1;
+}
+
+.main_container .content .cards {
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.main_container .content .cards .card {
+    width: 250px;
+    height: 150px;
+    background: white;
+    margin: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* .main_container .content .content-2 {
+    min-height: 60vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+} */
+
+.main_container .content .content-2 .recent-payments {
+    min-height: 50vh;
+    flex: 5;
+    background: white;
+    margin: 0 25px 25px 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+}
+
+.main_container .content .content-2 .new-students {
+    flex: 2;
+    background: white;
+    min-height: 50vh;
+    margin: 0 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+}
+/* 
+.main_container .content .content-2 .new-students table td:nth-child(1) img {
+    height: 40px;
+    width: 40px;
+}
+ */
+
+
+@@media screen and (max-width:536px) {
+
+    .main_container .content .cards {
+        justify-content: center;
+    }
+
+    .main_container .content .content-2 .recent-payments table th:nth-child(2),
+    .main_container .content .content-2 .recent-payments table td:nth-child(2) {
+        display: none;
+    }
+}
+</style>
