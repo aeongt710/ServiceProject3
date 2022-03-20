@@ -4,31 +4,214 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@*<div class="text-center">
+    <h1>Hire Local Workers</h1>
+    <p>Whether your job requires experience hospitality worker, security professionals, or customer service skills, <bold>SSP</bold> will source the expertise you seek.</p>
+</div>*@
 
-@*<form method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <select name="number">
-        <option value="">Select a number</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-    <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
+  <div class="zcard">
+    <div class="zcard-container">
+        <div class="zhero-image-container">
+            <img class="zhero-image-mobile"
+                 src="~/vectors/home.jpg" style="width:300px"
+                  />
+            <img class="zhero-image-desktop" style="width:600px"
+                 src="~/vectors/home.jpg"
+                />
+        </div>
+        
+        <div class="ztext-box">
+            <div class="zhero-text">
+                <h1>Get <span>Stats & insights</span> that help your business grow.</h1>
+                <br />
+                <p>
+                    Whether your job requires experience hospitality worker, security professionals, or customer service skills, SSP will source the expertise you seek.
+                </p>
+            </div>
+
+@*            <ul class="zst">
+                <li class="zstli">
+                    <span>123</span>
+                    <span><a asp-page="./Warehouses/Index" style="color:azure">WAREHOUSES</a></span>
+                </li>
+                <li class="zstli">
+                    <span>123</span>
+                    <span><a asp-page="./Products/Index" style="color:azure">PRODUCTS</a></span>
+                </li>
+                <li class="zstli">
+                    <span>123</span>
+                    <span><a asp-page="./Items/Index" style="color:azure">ITEMS</a></span>
+                </li>
+            </ul>*@
+        </div>
     </div>
-</form>*@
+</div>
+<style>
+    <style>
 
-@*    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Dropdown button
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div>*@
+
+@@media (min-width: 48em) {
+    .zheader li {
+        float: left;
+    }
+
+        .zheader li a {
+            padding: 22px 14px;
+        }
+
+    .zheader .zmenu {
+        clear: none;
+        float: right;
+        max-height: none;
+    }
+
+    .zheader .zmenu-icon {
+        display: none;
+    }
+}
+
+
+/*.zcard {
+}*/
+/* div 1 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+
+.zcard-container {
+    background-color: hsl(244, 38%, 16%);
+    /*width: 90%;*/
+    border-radius: 10px;
+    width: 100%;
+    max-width: 475px;
+    overflow: hidden;
+    margin: 30px 0;
+    padding: 50px;
+}
+
+.zhero-image-container {
+    background-color: hsl(0, 0%, 95%);
+}
+
+.zhero-image-mobile {
+    display: block;
+    width: 100%;
+    mix-blend-mode: multiply;
+}
+
+.ztext-box {
+    text-align: center;
+    padding: 20px 30px;
+}
+
+.zhero-image-desktop {
+    display: none;
+}
+
+h1 {
+    color: hsl(0, 0%, 100%);
+    font-family: "inter", sans-serif;
+    font-size: 1.76rem;
+}
+
+    h1 span {
+        color: hsl(280, 6%, 90%);
+    }
+
+.zhero-text p {
+    font-family: "lexend Deca", sans-serif;
+    font-size: 0.938rem;
+    font-weight: 400;
+    color: hsla(0, 0%, 100%, 0.75);
+    line-height: 1.6rem;
+}
+
+.zst {
+    list-style: none;
+    font-family: "inter", sans-serif;
+    text-transform: uppercase;
+    color: hsla(0, 0%, 100%, 0.6);
+    font-size: 0.8rem;
+    display: block;
+    letter-spacing: 0.05rem;
+    padding: 0;
+}
+
+.zstli {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+    .zstli span:nth-of-type(1) {
+        color: hsl(0, 0%, 100%);
+        font-size: 1.3rem;
+        font-weight: bolder;
+        margin-bottom: 5px;
+    }
+
+    .zstli span:nth-of-type(2) {
+        letter-spacing: 0.2rem;
+        font-size: 0.7rem;
+    }
+
+.zattribution {
+    font-size: 0.94rem;
+    text-align: center;
+    color: hsla(0, 0%, 100%, 0.6);
+}
+
+    .zattribution a {
+        color: hsl(278, 15%, 90%);
+    }
+
+@@media (min-width: 1250px) {
+    .zcard-container {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        max-width: none;
+        text-align: left;
+        width: 100%;
+        max-width: 1191px;
+        max-height: 800px;
+    }
+
+    .zhero-image-desktop {
+        display: block;
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: multiply;
+        overflow: hidden;
+    }
+
+    .zhero-image-mobile {
+        display: none;
+    }
+
+
+
+    .ztext-box {
+        width: 50%;
+        text-align: left;
+        padding: 0 40px;
+    }
+
+    .zst {
+        display: flex;
+        justify-content: space-between;
+        max-width: 400px;
+        margin-top: 40px;
+    }
+}
+
+
+
+
+
+        </style>
+</style>

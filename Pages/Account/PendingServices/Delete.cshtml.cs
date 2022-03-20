@@ -51,7 +51,9 @@ namespace ServiceProject3.Pages.Account.PendingServices
 
             if (ServiceBought != null)
             {
-                _context.ServiceBought.Remove(ServiceBought);
+                ServiceBought.ApprovalStatus = true;
+                _context.Attach(ServiceBought).State = EntityState.Modified;
+                //_context.ServiceBought.Remove(ServiceBought);
                 await _context.SaveChangesAsync();
             }
 

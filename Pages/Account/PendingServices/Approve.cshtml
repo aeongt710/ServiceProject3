@@ -1,16 +1,15 @@
 ﻿@page
-@model ServiceProject3.Pages.Account.PendingServices.DeleteModel
+@model ServiceProject3.Pages.Account.PendingServices.ApproveModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Approve";
 }
 
-<h1>ApproveModel</h1>
-
-<h3>Are you sure you want to delete this?</h3>
+<h1>Approve Service</h1>
+<hr />
+<h3>Are you sure you want to Approve this?</h3>
 <div>
-    <h4>ServiceBought</h4>
-    <hr />
+    
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ServiceBought.Service.Name)

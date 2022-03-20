@@ -10,9 +10,9 @@ using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.Account.PendingServices
+namespace ServiceProject3.Pages.Account.Seeker
 {
-    [Authorize(Roles = "Provider")]
+    [Authorize(Roles = "Seeker")]
     public class IndexModel : PageModel
     {
         private readonly ServiceProject3.Data.ApplicationDbContext _context;
@@ -23,20 +23,16 @@ namespace ServiceProject3.Pages.Account.PendingServices
             _userManager = userManager;
         }
 
-        public IList<ServiceBought> ServiceBought { get;set; }
+        public IList<ServiceBought> ServiceBought { get; set; }
 
         public async Task OnGetAsync()
         {
-            //ServiceBought = await _context.ServiceBought
-            //    .Include(s => s.Seeker)
-            //    .Include(s => s.Service).ToListAsync();
-
             var current_User = _userManager.GetUserAsync(HttpContext.User).Result;
             string current_User_Id = "" + current_User.Id;
             ServiceBought = await _context.ServiceBought
                 .Include(a => a.Service)
                 .Include(b => b.Seeker)
-                .Where(m => m.Service.UserId == current_User_Id && m.ApprovalStatus == false).ToListAsync();
+                .Where(m => m.SeekerId == current_User_Id && m.ApprovalStatus == false).ToListAsync();
         }
     }
 }

@@ -1,26 +1,23 @@
 ﻿@page
-@model ServiceProject3.Pages.Account.PendingServices.IndexModel
+@model ServiceProject3.Pages.Account.Seeker.ProgressModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Progress";
 }
 
-<h1>Index</h1>
+<h1>Progress</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                Service @Html.DisplayNameFor(model => model.ServiceBought[0].Service.Name)
+                @Html.DisplayNameFor(model => model.ServiceBought[0].Service)
             </th>
             <th>
-                Seeker @Html.DisplayNameFor(model => model.ServiceBought[0].Seeker.Email)
+                @Html.DisplayNameFor(model => model.ServiceBought[0].Service.Name)
             </th>
             <th>
-                Seeker @Html.DisplayNameFor(model => model.ServiceBought[0].Seeker.PhoneNumber)
+                @Html.DisplayNameFor(model => model.ServiceBought[0].Service.HourlyRate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ServiceBought[0].Note)
@@ -44,13 +41,13 @@
 @foreach (var item in Model.ServiceBought) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Service.Id)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Service.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Seeker.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Seeker.PhoneNumber)
+                @Html.DisplayFor(modelItem => item.Service.HourlyRate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Note)
@@ -66,11 +63,11 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Review)
-            </td>
-*@            <td>
-@*                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |*@
-                <a asp-page="./Approve" asp-route-id="@item.Id">Approve</a>
+            </td>*@
+            <td>
+                <a asp-page="./Complete" asp-route-id="@item.Id">Mark Complete</a>
+@*                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>*@
             </td>
         </tr>
 }

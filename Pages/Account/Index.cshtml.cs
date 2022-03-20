@@ -25,6 +25,10 @@ namespace ServiceProject3.Pages.Account
         public IList<Service> Service { get; set; }
 
         public IList<ServiceBought> PendngServices { get; set; }
+
+        public IList<ServiceBought> ApprovedServicesSeeker { get; set; }
+        public IList<ServiceBought> PendingServicesSeeker { get; set; }
+        public IList<ServiceBought> CompletedServicesSeeker { get; set; }
         public async Task OnGetAsync()
         {
             Service = await _context.Service
@@ -33,10 +37,24 @@ namespace ServiceProject3.Pages.Account
             string current_User_Id = "" + current_User.Id;
 
             PendngServices = await _context.ServiceBought
-                .Include(a=>a.Service).Where(m=>m.Service.UserId == current_User_Id && m.ApprovalStatus==false).ToListAsync();
+                .Include(a => a.Service).Where(m => m.Service.UserId == current_User_Id && m.ApprovalStatus == false).ToListAsync();
 
             Service = await _context.Service
                 .Include(s => s.User).Where(m => m.UserId == current_User_Id).ToListAsync();
+
+
+            PendingServicesSeeker = await _context.ServiceBought
+                .Include(a => a.Service)
+                .Where(m => m.SeekerId == current_User_Id && m.ApprovalStatus == false)
+                .ToListAsync();
+            ApprovedServicesSeeker = await _context.ServiceBought
+                .Include(a => a.Service)
+                .Where(m => m.SeekerId == current_User_Id && m.ApprovalStatus == true && m.CompletionStatus == false)
+                .ToListAsync();
+            CompletedServicesSeeker = await _context.ServiceBought
+                .Include(a => a.Service)
+                .Where(m => m.SeekerId == current_User_Id && m.ApprovalStatus == true && m.CompletionStatus==true)
+                .ToListAsync();
         }
     }
 }

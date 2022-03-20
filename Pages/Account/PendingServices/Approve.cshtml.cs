@@ -2,22 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
 namespace ServiceProject3.Pages.Account.PendingServices
 {
-    [Authorize(Roles = "Provider")]
-    public class EditModel : PageModel
+    public class ApproveModel : PageModel
     {
         private readonly ServiceProject3.Data.ApplicationDbContext _context;
 
-        public EditModel(ServiceProject3.Data.ApplicationDbContext context)
+        public ApproveModel(ServiceProject3.Data.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -40,44 +37,27 @@ namespace ServiceProject3.Pages.Account.PendingServices
             {
                 return NotFound();
             }
-           ViewData["SeekerId"] = new SelectList(_context.Users, "Id", "Id");
-           ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "Id");
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(ServiceBought).State = EntityState.Modified;
+            ServiceBought = await _context.ServiceBought.FindAsync(id);
 
-            try
+            if (ServiceBought != null)
             {
+                ServiceBought.ApprovalStatus = true;
+                _context.Attach(ServiceBought).State = EntityState.Modified;
+                //_context.ServiceBought.Remove(ServiceBought);
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ServiceBoughtExists(ServiceBought.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
             }
 
             return RedirectToPage("./Index");
-        }
-
-        private bool ServiceBoughtExists(int id)
-        {
-            return _context.ServiceBought.Any(e => e.Id == id);
         }
     }
 }
