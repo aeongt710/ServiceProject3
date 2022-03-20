@@ -6,7 +6,6 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
-
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
@@ -28,6 +27,7 @@ a {
 -------------------------------------------------- */
 html {
   font-size: 14px;
+
 }
 @media (min-width: 768px) {
   html {
@@ -54,13 +54,15 @@ button.accept-policy {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    /*background-color: #f1f1f1;*/
 }
 
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  /*background-color: #f1f1f1;*/
 }
 .footer {
   position: absolute;

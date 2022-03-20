@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ServiceProject3.Pages.Account
 {
-
+    [Authorize(Roles ="Provider")]
     public class IndexModel : PageModel
     {
         private readonly ServiceProject3.Data.ApplicationDbContext _context;
