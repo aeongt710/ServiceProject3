@@ -14,5 +14,6 @@ namespace ServiceProject3.Data
         {
         }
         public DbSet<ServiceProject3.Models.Service> Service { get; set; }
+        public DbSet<ServiceProject3.Models.ServiceBought> ServiceBought { get; set; }
     }
 }

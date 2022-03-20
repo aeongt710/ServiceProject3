@@ -1,0 +1,65 @@
+﻿@page
+@model ServiceProject3.Pages.Account.PendingServices.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ServiceBought</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ServiceBought.Id" />
+            <div class="form-group">
+                <label asp-for="ServiceBought.ServiceId" class="control-label"></label>
+                <select asp-for="ServiceBought.ServiceId" class="form-control" asp-items="ViewBag.ServiceId"></select>
+                <span asp-validation-for="ServiceBought.ServiceId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServiceBought.SeekerId" class="control-label"></label>
+                <select asp-for="ServiceBought.SeekerId" class="form-control" asp-items="ViewBag.SeekerId"></select>
+                <span asp-validation-for="ServiceBought.SeekerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServiceBought.Note" class="control-label"></label>
+                <input asp-for="ServiceBought.Note" class="form-control" />
+                <span asp-validation-for="ServiceBought.Note" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ServiceBought.ApprovalStatus" /> @Html.DisplayNameFor(model => model.ServiceBought.ApprovalStatus)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ServiceBought.CompletionStatus" /> @Html.DisplayNameFor(model => model.ServiceBought.CompletionStatus)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServiceBought.Rating" class="control-label"></label>
+                <input asp-for="ServiceBought.Rating" class="form-control" />
+                <span asp-validation-for="ServiceBought.Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServiceBought.Review" class="control-label"></label>
+                <input asp-for="ServiceBought.Review" class="form-control" />
+                <span asp-validation-for="ServiceBought.Review" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

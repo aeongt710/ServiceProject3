@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.Services
+namespace ServiceProject3.Pages.test
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace ServiceProject3.Pages.Services
         }
 
         [BindProperty]
-        public Service Service { get; set; }
+        public ServiceBought ServiceBought { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,14 +30,16 @@ namespace ServiceProject3.Pages.Services
                 return NotFound();
             }
 
-            Service = await _context.Service
-                .Include(s => s.User).FirstOrDefaultAsync(m => m.Id == id);
+            ServiceBought = await _context.ServiceBought
+                .Include(s => s.Seeker)
+                .Include(s => s.Service).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Service == null)
+            if (ServiceBought == null)
             {
                 return NotFound();
             }
-           ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+           ViewData["SeekerId"] = new SelectList(_context.Users, "Id", "Id");
+           ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "Id");
             return Page();
         }
 
@@ -50,7 +52,7 @@ namespace ServiceProject3.Pages.Services
                 return Page();
             }
 
-            _context.Attach(Service).State = EntityState.Modified;
+            _context.Attach(ServiceBought).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +60,7 @@ namespace ServiceProject3.Pages.Services
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ServiceExists(Service.Id))
+                if (!ServiceBoughtExists(ServiceBought.Id))
                 {
                     return NotFound();
                 }
@@ -71,9 +73,9 @@ namespace ServiceProject3.Pages.Services
             return RedirectToPage("./Index");
         }
 
-        private bool ServiceExists(int id)
+        private bool ServiceBoughtExists(int id)
         {
-            return _context.Service.Any(e => e.Id == id);
+            return _context.ServiceBought.Any(e => e.Id == id);
         }
     }
 }

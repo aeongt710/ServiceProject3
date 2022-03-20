@@ -5,8 +5,8 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<h1>Services</h1>
+@*
 <p>
     <a asp-page="Create">Create New</a>
 </p>
@@ -22,33 +22,152 @@
             <th>
                 @Html.DisplayNameFor(model => model.Service[0].Description)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Service[0].User)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Service) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HourlyRate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Service)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HourlyRate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a asp-page="./Buy" asp-route-id="@item.Id">Buy</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                </td>
+            </tr>
+        }
     </tbody>
-</table>
+</table>*@
+@foreach (var item in Model.Service)
+{
+    <div class="card_containerx">
+        <div class="cardx">
+            <div class="upperx">
+                <div class="vectorx">
+                <img src="~/vectors/service_provider_2x_alt.png" alt="">
+            </div>
+            <div class="contentx">
+                <h1 class="titlex"><a asp-page="./Details" asp-route-id="@item.Id" class="titlex_a">@Html.DisplayFor(modelItem => item.Name)</a></h1>
+                <h3 class="valuex">@Html.DisplayFor(modelItem => item.HourlyRate)&nbsp;Rs/Hour</h3>
+            </div>
+            </div>
+            <div>
+                <hr/>
+            </div>
+            <div class="lowerx">
+                <h4 class="h4_emailx">@item.User.Email</h4>
+                <button class="buy_button"><a class="a_buy_link" asp-page="./Buy" asp-route-id="@item.Id">Buy Now</a></button>
+            </div>
+        </div>
+    </div>
+}
+<style>
+    .a_buy_link{
+        color: white;
+        text-decoration:none;
+    }
+    .a_buy_link:hover{
+        color: white;
+        text-decoration:none;
+    }
+    .buy_button{
+        /*margin-top: 0px;*/
+        border:none;
+        background-color: #1b6ec2;
+        color: white;
+        font-weight: 400%;
+        margin-right: 20px;
+        height: 35px;
+        border-radius:8px;
+    }
+    .buy_button:hover{
+        background-color: #999;
+        /*color: #1b6ec2;*/
+    }
+    .lowerx{
+        display: flex;
+        justify-content: space-between;
+        /*padding-bottom: 20px;*/
+    }
+    .h4_emailx{
+        padding-top:5px;
+        font-size: 15px;
+        padding-bottom: 20px;
+        padding-left:30px;
+        font-family:Verdana;
+        color: #999;
+    }
+    .upperx{
+    display: flex;
+
+}
+
+    @@media screen and (max-width: 536px)
+{
+    .card_containerx {
+        justify-content: center;
+        /*background-color: aqua;*/
+        padding: 0px;
+    }
+}
+.card_containerx{
+    display: flex;
+    /* background-color: aqua   ; */
+    align-items: center;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+    /*padding: 20px 10px;*/
+    align-items: center;
+}
+.cardx{
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    width: 500px;
+    height: 170px;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    flex-direction: column;
+}
+.cardx:hover{
+    background-color: rgb(0 0 0 / 10%);
+}
+
+.vectorx{
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    flex: 0.1;
+}
+.contentx{
+    margin-top: 30px;
+    /* margin-bottom: 30px; */
+    flex: 0.7;
+}
+.titlex{
+    color: #444;
+    font-size: 180%!important;
+    text-decoration: none;
+}
+.titlex_a{
+    color: #444;
+    font-size: 100%!important;
+}
+.titlex_a:hover{
+    text-decoration: none;
+}
+.valuex{
+    font-family: 'Times New Roman';
+    color: #999;
+    font-size: 130%!important;
+}
+
+</style>

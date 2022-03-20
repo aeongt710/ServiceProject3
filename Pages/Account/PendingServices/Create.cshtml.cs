@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.Services
+namespace ServiceProject3.Pages.Account.PendingServices
 {
     public class CreateModel : PageModel
     {
@@ -21,12 +21,13 @@ namespace ServiceProject3.Pages.Services
 
         public IActionResult OnGet()
         {
-        ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+        ViewData["SeekerId"] = new SelectList(_context.Users, "Id", "Id");
+        ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "Id");
             return Page();
         }
 
         [BindProperty]
-        public Service Service { get; set; }
+        public ServiceBought ServiceBought { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -36,7 +37,7 @@ namespace ServiceProject3.Pages.Services
                 return Page();
             }
 
-            _context.Service.Add(Service);
+            _context.ServiceBought.Add(ServiceBought);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
