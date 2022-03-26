@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "ServiceProject320220320200917",
+      "defaultValue": "ServiceProject320220322130212",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }
