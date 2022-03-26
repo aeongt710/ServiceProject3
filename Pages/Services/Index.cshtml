@@ -6,6 +6,7 @@
 }
 
 <h1>Services</h1>
+<hr />
 @*
 <p>
     <a asp-page="Create">Create New</a>
@@ -46,9 +47,11 @@
         }
     </tbody>
 </table>*@
+<div class="main_container">
 @foreach (var item in Model.Service)
 {
-    <div class="card_containerx">
+    <a asp-page="./Details" asp-route-id="@item.Id">
+    <div class="card_containerx" >
         <div class="cardx">
             <div class="upperx">
                 <div class="vectorx">
@@ -68,8 +71,15 @@
             </div>
         </div>
     </div>
+    </a>
 }
+</div>
 <style>
+    .main_container{
+        display:flex;
+        
+        flex-wrap:wrap;
+    }
     .a_buy_link{
         color: white;
         text-decoration:none;

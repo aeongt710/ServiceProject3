@@ -1,9 +1,7 @@
 ﻿@page
 @model ServiceProject3.Pages.Account.IndexModel
 @{
-}
-
-    
+}    
 @if (User.IsInRole("Provider"))
 {
  <div class="card_containerx">
@@ -87,7 +85,6 @@
     </div>
 }
 <style>
-
     @@media screen and (max-width: 536px)
 {
     .card_containerx {
@@ -96,6 +93,7 @@
         padding: 0px;
     }
 }
+
 .card_containerx{
     display: flex;
     /* background-color: aqua   ; */
@@ -116,7 +114,6 @@
 .cardx:hover{
     background-color: rgb(0 0 0 / 10%);
 }
-
 .vectorx{
     margin-top: 30px;
     margin-left: 8px;
@@ -145,5 +142,4 @@
     color: #999;
     font-size: 130%!important;
 }
-
 </style>
