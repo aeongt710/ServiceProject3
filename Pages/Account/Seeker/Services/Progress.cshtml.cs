@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.Account.Seeker
+namespace ServiceProject3.Pages.Account.Seeker.Services
 {
     public class ProgressModel : PageModel
     {

@@ -1,0 +1,64 @@
+﻿@page
+@model ServiceProject3.Pages.test2.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>MaterialBought</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaterialBought.Material)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaterialBought.Material.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaterialBought.Seeker)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaterialBought.Seeker.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaterialBought.Note)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaterialBought.Note)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaterialBought.ApprovalStatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaterialBought.ApprovalStatus)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaterialBought.CompletionStatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaterialBought.CompletionStatus)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaterialBought.Rating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaterialBought.Rating)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaterialBought.Review)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaterialBought.Review)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="MaterialBought.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

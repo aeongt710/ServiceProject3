@@ -1,0 +1,78 @@
+﻿@page
+@model ServiceProject3.Pages.Account.Seeker.Materials.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Requested Service</h1>
+
+<p>
+    @*<a asp-page="Create">Create New</a>*@
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceBought[0].Service)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceBought[0].Service.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceBought[0].Service.HourlyRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceBought[0].Note)
+            </th>
+@*            <th>
+                @Html.DisplayNameFor(model => model.ServiceBought[0].ApprovalStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceBought[0].CompletionStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceBought[0].Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceBought[0].Review)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ServiceBought) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service.HourlyRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+@*            <td>
+                @Html.DisplayFor(modelItem => item.ApprovalStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletionStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Review)
+            </td>*@
+            <td>
+                @*<a asp-page="./Complete" asp-route-id="@item.Id">Mark Complete</a>*@
+@*                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

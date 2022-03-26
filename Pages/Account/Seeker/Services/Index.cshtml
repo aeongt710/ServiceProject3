@@ -1,12 +1,15 @@
 ﻿@page
-@model ServiceProject3.Pages.Account.Seeker.ProgressModel
+@model ServiceProject3.Pages.Account.Seeker.Services.IndexModel
 
 @{
-    ViewData["Title"] = "Progress";
+    ViewData["Title"] = "Index";
 }
 
-<h1>Progress</h1>
+<h1>Requested Service</h1>
 
+<p>
+    @*<a asp-page="Create">Create New</a>*@
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -65,7 +68,7 @@
                 @Html.DisplayFor(modelItem => item.Review)
             </td>*@
             <td>
-                <a asp-page="./Complete" asp-route-id="@item.Id">Mark Complete</a>
+                @*<a asp-page="./Complete" asp-route-id="@item.Id">Mark Complete</a>*@
 @*                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>*@
             </td>

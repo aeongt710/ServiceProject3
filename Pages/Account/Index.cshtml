@@ -51,7 +51,7 @@
                 <img src="~/vectors/requested_60px.png" alt="">
             </div>
             <div class="contentx">
-                <h1 class="titlex"><a asp-page="./Seeker/Index" class="titlex_a">Requested</a></h1>
+                <h1 class="titlex"><a asp-page="./Seeker/Services/Index" class="titlex_a">Requested</a></h1>
                 <h3 class="valuex">@Model.PendingServicesSeeker.Count()</h3>
             </div>
         </div>
@@ -60,16 +60,16 @@
                 <img src="~/vectors/loading_64px.png" alt="">
             </div>
             <div class="contentx">
-                <h1 class="titlex"><a asp-page="./Seeker/Progress" class="titlex_a">Progress</a></h1>
+                <h1 class="titlex"><a asp-page="./Seeker/Services/Progress" class="titlex_a">Progress</a></h1>
                 <h3 class="valuex">@Model.ApprovedServicesSeeker.Count()</h3>
             </div>
         </div>
         <div class="cardx">
             <div class="vectorx">
-                <img src="~/vectors/service_1_60px.png" alt="">
+                <img src="~/vectors/completed_48px.png" alt="">
             </div>
             <div class="contentx">
-                <h1 class="titlex"><a asp-page="./Seeker/Completed" class="titlex_a">History</a></h1>
+                <h1 class="titlex"><a asp-page="./Seeker/Services/Completed" class="titlex_a">History</a></h1>
                 <h3 class="valuex">@Model.CompletedServicesSeeker.Count()</h3>
             </div>
         </div>

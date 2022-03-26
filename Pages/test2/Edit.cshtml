@@ -1,0 +1,65 @@
+﻿@page
+@model ServiceProject3.Pages.test2.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>MaterialBought</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MaterialBought.Id" />
+            <div class="form-group">
+                <label asp-for="MaterialBought.MaterialId" class="control-label"></label>
+                <select asp-for="MaterialBought.MaterialId" class="form-control" asp-items="ViewBag.MaterialId"></select>
+                <span asp-validation-for="MaterialBought.MaterialId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaterialBought.SeekerId" class="control-label"></label>
+                <select asp-for="MaterialBought.SeekerId" class="form-control" asp-items="ViewBag.SeekerId"></select>
+                <span asp-validation-for="MaterialBought.SeekerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaterialBought.Note" class="control-label"></label>
+                <input asp-for="MaterialBought.Note" class="form-control" />
+                <span asp-validation-for="MaterialBought.Note" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="MaterialBought.ApprovalStatus" /> @Html.DisplayNameFor(model => model.MaterialBought.ApprovalStatus)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="MaterialBought.CompletionStatus" /> @Html.DisplayNameFor(model => model.MaterialBought.CompletionStatus)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaterialBought.Rating" class="control-label"></label>
+                <input asp-for="MaterialBought.Rating" class="form-control" />
+                <span asp-validation-for="MaterialBought.Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaterialBought.Review" class="control-label"></label>
+                <input asp-for="MaterialBought.Review" class="form-control" />
+                <span asp-validation-for="MaterialBought.Review" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
