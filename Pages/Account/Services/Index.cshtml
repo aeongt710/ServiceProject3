@@ -35,7 +35,16 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HourlyRate)
+                    @{
+                        if(item.HourlyRate==-1)
+                        {
+                            <div>Contract Based</div>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.HourlyRate)
+                        }
+                    }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)

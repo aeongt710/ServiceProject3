@@ -26,10 +26,11 @@ namespace ServiceProject3.Pages.Account.Services
         public IActionResult OnGet()
         {
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
-
+            Service = new Service();
             var current_User = _userManager.GetUserAsync(HttpContext.User).Result;
             UserId = "" + current_User.Id;
             //Service.UserId = UserId;
+            Service.HourlyRate = 0;
             return Page();
         }
         [BindProperty]
@@ -41,9 +42,19 @@ namespace ServiceProject3.Pages.Account.Services
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
+
+
             if (!ModelState.IsValid)
             {
                 return Page();
+            }
+            var number = Request.Form["number"];
+            if (number == "1")
+            {
+
+            }else if(number == "2")
+            {
+                Service.HourlyRate = -1;
             }
             var current_User = _userManager.GetUserAsync(HttpContext.User).Result;
             Service.UserId = "" + current_User.Id;
