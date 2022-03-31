@@ -50,12 +50,20 @@
 <div class="main_container">
 @foreach (var item in Model.Service)
 {
-    <a asp-page="./Details" asp-route-id="@item.Id">
-    <div class="card_containerx" >
-        <div class="cardx">
-            <div class="upperx">
-                <div class="vectorx">
-                <img src="~/vectors/service_provider_2x_alt.png" alt="">
+        <a asp-page="./Details" asp-route-id="@item.Id">
+            <div class="card_containerx" >
+                <div class="cardx">
+                    <div class="upperx">
+                        <div class="vectorx">
+                            @{
+                                Model.user1 = Model.UserDetail.FirstOrDefault(m => m.UserId == item.UserId);
+                                string img = "~/images/";
+                                if(Model.user1!=null){
+                                    img = "/images/" + Model.user1.ImgSrc;
+                                }
+                                
+                            }
+                <img src="@img" alt="a" onerror=" this.src= '/vectors/service_provider_2x_alt.png'; " width="64" height="64">
             </div>
             <div class="contentx">
                 <h1 class="titlex"><a asp-page="./Details" asp-route-id="@item.Id" class="titlex_a">@Html.DisplayFor(modelItem => item.Name)</a></h1>

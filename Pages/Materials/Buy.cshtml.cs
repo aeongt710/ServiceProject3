@@ -44,7 +44,7 @@ namespace ServiceProject3.Pages.Materials
             string current_User_Id = "" + current_User.Id;
             MaterialBought.SeekerId = current_User_Id;
             MaterialBought.ApprovalStatus = false;
-            MaterialBought.CompletionStatus = false;
+            MaterialBought.DeliveryStatus = false;
             MaterialBought.Rating = -1;
             if (!ModelState.IsValid)
             {

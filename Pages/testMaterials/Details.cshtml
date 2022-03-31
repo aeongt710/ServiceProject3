@@ -1,5 +1,5 @@
 ﻿@page
-@model ServiceProject3.Pages.test2.DetailsModel
+@model ServiceProject3.Pages.testMaterials.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -24,10 +24,10 @@
             @Html.DisplayFor(model => model.MaterialBought.Seeker.Id)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MaterialBought.Note)
+            @Html.DisplayNameFor(model => model.MaterialBought.Address)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MaterialBought.Note)
+            @Html.DisplayFor(model => model.MaterialBought.Address)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.MaterialBought.ApprovalStatus)
@@ -36,10 +36,10 @@
             @Html.DisplayFor(model => model.MaterialBought.ApprovalStatus)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MaterialBought.CompletionStatus)
+            @Html.DisplayNameFor(model => model.MaterialBought.DeliveryStatus)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MaterialBought.CompletionStatus)
+            @Html.DisplayFor(model => model.MaterialBought.DeliveryStatus)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.MaterialBought.Rating)

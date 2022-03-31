@@ -35,7 +35,18 @@
     @*<div class="container">*@
     @if (SignInManager.IsSignedIn(User))
     {
+            @if (User.IsInRole("Seeker"))
+            {
+               <div class="checker">Seeker</div>
+            }
+            @if (User.IsInRole("Provider"))
+            {
+              <div class="checker">Provider</div>
+            }
         <div class="dropdown">
+
+
+            
             <button class="btn  dropdown-toggle" style="background-color:none;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 @User.Identity.Name
             </button>
@@ -71,6 +82,11 @@
 </ul>
 
 <style>
+
+    .checker{
+        padding-top:7px;
+    }
+
     .dropdown:hover > .dropdown-menu {
         display: block;
     }

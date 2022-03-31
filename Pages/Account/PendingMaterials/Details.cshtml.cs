@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.Services
+namespace ServiceProject3.Pages.Account.PendingMaterials
 {
+    [Authorize(Roles = "Provider")]
     public class DetailsModel : PageModel
     {
         private readonly ServiceProject3.Data.ApplicationDbContext _context;
@@ -19,8 +21,7 @@ namespace ServiceProject3.Pages.Services
             _context = context;
         }
 
-        public Service Service { get; set; }
-        public IList<ServiceBought> ServiceBought { get; set; }
+        public ServiceBought ServiceBought { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,13 +30,11 @@ namespace ServiceProject3.Pages.Services
                 return NotFound();
             }
 
-            Service = await _context.Service
-                .Include(s => s.User).FirstOrDefaultAsync(m => m.Id == id);
             ServiceBought = await _context.ServiceBought
-                .Include(a => a.Service)
-                .Include(b => b.Seeker)
-                .Where(m => m.ServiceId  == id).ToListAsync();
-            if (Service == null)
+                .Include(s => s.Seeker)
+                .Include(s => s.Service).FirstOrDefaultAsync(m => m.Id == id);
+
+            if (ServiceBought == null)
             {
                 return NotFound();
             }

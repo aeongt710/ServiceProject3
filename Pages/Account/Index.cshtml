@@ -1,10 +1,10 @@
 ﻿@page
 @model ServiceProject3.Pages.Account.IndexModel
 @{
-}    
+}
 @if (User.IsInRole("Provider"))
 {
- <div class="card_containerx">
+    <div class="card_containerx">
         <div class="cardx">
             <div class="vectorx">
                 <img src="~/vectors/service_1_60px.png" alt="">
@@ -42,10 +42,50 @@
             </div>
         </div>
     </div>
+    // Provider   Materials Started
+    <div class="card_containerx">
+        <div class="cardx">
+            <div class="vectorx">
+                <img src="/vectors/product_50px.png" alt="">
+            </div>
+            <div class="contentx">
+                <h1 class="titlex"><a asp-page="./Materials/Index" class="titlex_a">Materials</a></h1>
+                <h3 class="valuex">@Model.Materials.Count()</h3>
+            </div>
+        </div>
+        <div class="cardx">
+            <div class="vectorx">
+                <img src="~/vectors/requested_60px.png" alt="">
+            </div>
+            <div class="contentx">
+                <h1 class="titlex"><a asp-page="./PendingMaterials/Index" class="titlex_a">Requested</a></h1>
+                <h3 class="valuex">@Model.ProviderRequestedMaterials.Count()</h3>
+            </div>
+        </div>
+        <div class="cardx">
+            <div class="vectorx">
+                <img src="~/vectors/transit_60px.png" alt="">
+            </div>
+            <div class="contentx">
+                <h1 class="titlex"><a asp-page="./PendingMaterials/Pending" class="titlex_a">InTransit</a></h1>
+                <h3 class="valuex">@Model.ProviderTransitMaterials.Count()</h3>
+            </div>
+        </div>
+        <div class="cardx">
+            <div class="vectorx">
+                <img src="~/vectors/delivered_60px.png" alt="">
+            </div>
+            <div class="contentx">
+                <h1 class="titlex"><a asp-page="./PendingMaterials/Completed" class="titlex_a">Delivered</a></h1>
+                <h3 class="valuex">@Model.ProviderDeliveredMaterials.Count()</h3>
+            </div>
+        </div>
+    </div>
+    // Provider   Materials  Ended
 }
 @if (User.IsInRole("Seeker"))
 {
- <div class="card_containerx">
+    <div class="card_containerx">
         <div class="cardx">
             <div class="vectorx">
                 <img src="~/vectors/requested_60px.png" alt="">
@@ -73,73 +113,80 @@
                 <h3 class="valuex">@Model.CompletedServicesSeeker.Count()</h3>
             </div>
         </div>
-@*        <div class="cardx">
+        @*        <div class="cardx">
             <div class="vectorx">
-                <img src="students.png" alt="">
+            <img src="students.png" alt="">
             </div>
             <div class="contentx">
-                <h1 class="titlex"> Title</h1>
-                <h3 class="valuex">124</h3>
+            <h1 class="titlex"> Title</h1>
+            <h3 class="valuex">124</h3>
             </div>
-        </div>*@
+            </div>*@
     </div>
 }
 <style>
-    @@media screen and (max-width: 536px)
-{
-    .card_containerx {
-        justify-content: center;
-        /*background-color: aqua;*/
-        padding: 0px;
+    @@media screen and (max-width: 536px) {
+        .card_containerx {
+            justify-content: center;
+            /*background-color: aqua;*/
+            padding: 0px;
+        }
     }
-}
 
-.card_containerx{
-    display: flex;
-    /* background-color: aqua   ; */
-    align-items: center;
-    /* justify-content: space-between; */
-    flex-wrap: wrap;
-    padding: 20px 15px;
-    align-items: center;
-}
-.cardx{
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-    width: 230px;
-    height: 130px;
-    display: flex;
-    justify-content: space-around;
-    margin: 20px;
-}
-.cardx:hover{
-    background-color: rgb(0 0 0 / 10%);
-}
-.vectorx{
-    margin-top: 30px;
-    margin-left: 8px;
-    margin-right: 6px;
-    margin-bottom: 30px;
-    flex: 0.1;
-}
-.contentx{
-    margin-top: 30px;
-    /* margin-bottom: 30px; */
-    flex: 0.7;
-}
-.titlex{
-    color: #444;
-    font-size: 150%!important;
-    text-decoration: none;
-}
-.titlex_a{
-    color: #444;
-    font-size: 100%!important;
-}
-.titlex_a:hover{
-    text-decoration: none;
-}
-.valuex{
-    color: #999;
-    font-size: 130%!important;
-}
+    .card_containerx {
+        display: flex;
+        /* background-color: aqua   ; */
+        align-items: center;
+        /* justify-content: space-between; */
+        flex-wrap: wrap;
+        padding: 20px 15px;
+        align-items: center;
+    }
+
+    .cardx {
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+        width: 230px;
+        height: 130px;
+        display: flex;
+        justify-content: space-around;
+        margin: 20px;
+    }
+
+        .cardx:hover {
+            background-color: rgb(0 0 0 / 10%);
+        }
+
+    .vectorx {
+        margin-top: 30px;
+        margin-left: 8px;
+        margin-right: 6px;
+        margin-bottom: 30px;
+        flex: 0.1;
+    }
+
+    .contentx {
+        margin-top: 30px;
+        /* margin-bottom: 30px; */
+        flex: 0.7;
+    }
+
+    .titlex {
+        color: #444;
+        font-size: 150% !important;
+        text-decoration: none;
+    }
+
+    .titlex_a {
+        color: #444;
+        font-size: 100% !important;
+    }
+
+        .titlex_a:hover {
+            text-decoration: none;
+        }
+
+    .valuex {
+        color: #999;
+        font-size: 130% !important;
+    }
 </style>

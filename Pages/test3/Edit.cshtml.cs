@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.test2
+namespace ServiceProject3.Pages.test3
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace ServiceProject3.Pages.test2
         }
 
         [BindProperty]
-        public MaterialBought MaterialBought { get; set; }
+        public UserDetail UserDetail { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,16 +30,14 @@ namespace ServiceProject3.Pages.test2
                 return NotFound();
             }
 
-            MaterialBought = await _context.MaterialBought
-                .Include(m => m.Material)
-                .Include(m => m.Seeker).FirstOrDefaultAsync(m => m.Id == id);
+            UserDetail = await _context.UserDetail
+                .Include(u => u.User).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (MaterialBought == null)
+            if (UserDetail == null)
             {
                 return NotFound();
             }
-           ViewData["MaterialId"] = new SelectList(_context.Material, "Id", "Id");
-           ViewData["SeekerId"] = new SelectList(_context.Users, "Id", "Id");
+           ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             return Page();
         }
 
@@ -52,7 +50,7 @@ namespace ServiceProject3.Pages.test2
                 return Page();
             }
 
-            _context.Attach(MaterialBought).State = EntityState.Modified;
+            _context.Attach(UserDetail).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +58,7 @@ namespace ServiceProject3.Pages.test2
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MaterialBoughtExists(MaterialBought.Id))
+                if (!UserDetailExists(UserDetail.Id))
                 {
                     return NotFound();
                 }
@@ -73,9 +71,9 @@ namespace ServiceProject3.Pages.test2
             return RedirectToPage("./Index");
         }
 
-        private bool MaterialBoughtExists(int id)
+        private bool UserDetailExists(int id)
         {
-            return _context.MaterialBought.Any(e => e.Id == id);
+            return _context.UserDetail.Any(e => e.Id == id);
         }
     }
 }

@@ -29,6 +29,14 @@ namespace ServiceProject3.Pages.Account
         public IList<ServiceBought> ProviderCompleted { get; set; }
 
 
+
+        public IList<Material> Materials { get; set; }
+        public IList<MaterialBought> ProviderRequestedMaterials { get; set; }
+        public IList<MaterialBought> ProviderTransitMaterials { get; set; }
+        public IList<MaterialBought> ProviderDeliveredMaterials { get; set; }
+
+
+
         public IList<ServiceBought> ApprovedServicesSeeker { get; set; }
         public IList<ServiceBought> PendingServicesSeeker { get; set; }
         public IList<ServiceBought> CompletedServicesSeeker { get; set; }
@@ -39,7 +47,7 @@ namespace ServiceProject3.Pages.Account
             var current_User = _userManager.GetUserAsync(HttpContext.User).Result;
             string current_User_Id = "" + current_User.Id;
 
-            ProviderProgress= await _context.ServiceBought
+            ProviderProgress = await _context.ServiceBought
                 .Include(a => a.Service)
                 .Include(b => b.Seeker)
                 .Where(m => m.Service.UserId == current_User_Id && m.ApprovalStatus == true && m.CompletionStatus == false)
@@ -52,11 +60,14 @@ namespace ServiceProject3.Pages.Account
                 .ToListAsync();
 
             PendngServices = await _context.ServiceBought
-                .Include(a => a.Service).Where(m => m.Service.UserId == current_User_Id && m.ApprovalStatus == false )
+                .Include(a => a.Service)
+                .Where(m => m.Service.UserId == current_User_Id && m.ApprovalStatus == false)
                 .ToListAsync();
 
             Service = await _context.Service
-                .Include(s => s.User).Where(m => m.UserId == current_User_Id).ToListAsync();
+                .Include(s => s.User)
+                .Where(m => m.UserId == current_User_Id)
+                .ToListAsync();
 
 
             PendingServicesSeeker = await _context.ServiceBought
@@ -69,8 +80,33 @@ namespace ServiceProject3.Pages.Account
                 .ToListAsync();
             CompletedServicesSeeker = await _context.ServiceBought
                 .Include(a => a.Service)
-                .Where(m => m.SeekerId == current_User_Id && m.ApprovalStatus == true && m.CompletionStatus==true)
+                .Where(m => m.SeekerId == current_User_Id && m.ApprovalStatus == true && m.CompletionStatus == true)
                 .ToListAsync();
+
+
+
+            //Provider Materials
+
+            Materials = await _context.Material
+                .Include(s => s.User)
+                .Where(m => m.UserId == current_User_Id)
+                .ToListAsync();
+
+            ProviderRequestedMaterials = await _context.MaterialBought
+                .Include(s => s.Material)
+                .Where(m => m.Material.UserId == current_User_Id && m.ApprovalStatus == false)
+                .ToListAsync();
+
+            ProviderTransitMaterials = await _context.MaterialBought
+                .Include(s => s.Material)
+                .Where(m => m.Material.UserId == current_User_Id && m.ApprovalStatus == true && m.DeliveryStatus == false)
+                .ToListAsync();
+
+            ProviderDeliveredMaterials = await _context.MaterialBought
+               .Include(a => a.Material)
+               .Include(b => b.Seeker)
+               .Where(m => m.Material.UserId == current_User_Id && m.ApprovalStatus == true && m.DeliveryStatus == true)
+               .ToListAsync();
         }
     }
 }

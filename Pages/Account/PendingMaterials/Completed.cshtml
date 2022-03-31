@@ -1,0 +1,76 @@
+﻿@page
+@model ServiceProject3.Pages.Account.PendingMaterials.CompletedModel
+
+@{
+    ViewData["Title"] = "Completed";
+}
+
+<h1>Delivered</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Service @Html.DisplayNameFor(model => model.MaterialBought[0].Material.Name)
+            </th>
+            <th>
+                Seeker @Html.DisplayNameFor(model => model.MaterialBought[0].Seeker.Email)
+            </th>
+            <th>
+                Seeker @Html.DisplayNameFor(model => model.MaterialBought[0].Seeker.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Address)
+            </th>
+@*            <th>
+                @Html.DisplayNameFor(model => model.ServiceBought[0].ApprovalStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceBought[0].CompletionStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceBought[0].Rating)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Review)
+            </th>
+            @*<th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.MaterialBought) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seeker.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seeker.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+@*            <td>
+                @Html.DisplayFor(modelItem => item.ApprovalStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletionStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Review)
+            </td>
+            <td>
+@*                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |*@
+                @*<a asp-page="./Approve" asp-route-id="@item.Id">Approve</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

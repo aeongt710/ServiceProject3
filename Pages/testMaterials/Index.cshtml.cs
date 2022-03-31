@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.test2
+namespace ServiceProject3.Pages.testMaterials
 {
     public class IndexModel : PageModel
     {

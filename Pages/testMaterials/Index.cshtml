@@ -1,5 +1,5 @@
 ﻿@page
-@model ServiceProject3.Pages.test2.IndexModel
+@model ServiceProject3.Pages.testMaterials.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -20,13 +20,13 @@
                 @Html.DisplayNameFor(model => model.MaterialBought[0].Seeker)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaterialBought[0].Note)
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Address)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MaterialBought[0].ApprovalStatus)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaterialBought[0].CompletionStatus)
+                @Html.DisplayNameFor(model => model.MaterialBought[0].DeliveryStatus)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MaterialBought[0].Rating)
@@ -47,13 +47,13 @@
                 @Html.DisplayFor(modelItem => item.Seeker.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Note)
+                @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ApprovalStatus)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CompletionStatus)
+                @Html.DisplayFor(modelItem => item.DeliveryStatus)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Rating)

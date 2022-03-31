@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.test2
+namespace ServiceProject3.Pages.Account.PendingMaterials
 {
+    [Authorize(Roles = "Provider")]
     public class DeleteModel : PageModel
     {
         private readonly ServiceProject3.Data.ApplicationDbContext _context;
@@ -20,7 +22,7 @@ namespace ServiceProject3.Pages.test2
         }
 
         [BindProperty]
-        public MaterialBought MaterialBought { get; set; }
+        public ServiceBought ServiceBought { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,11 +31,11 @@ namespace ServiceProject3.Pages.test2
                 return NotFound();
             }
 
-            MaterialBought = await _context.MaterialBought
-                .Include(m => m.Material)
-                .Include(m => m.Seeker).FirstOrDefaultAsync(m => m.Id == id);
+            ServiceBought = await _context.ServiceBought
+                .Include(s => s.Seeker)
+                .Include(s => s.Service).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (MaterialBought == null)
+            if (ServiceBought == null)
             {
                 return NotFound();
             }
@@ -47,11 +49,13 @@ namespace ServiceProject3.Pages.test2
                 return NotFound();
             }
 
-            MaterialBought = await _context.MaterialBought.FindAsync(id);
+            ServiceBought = await _context.ServiceBought.FindAsync(id);
 
-            if (MaterialBought != null)
+            if (ServiceBought != null)
             {
-                _context.MaterialBought.Remove(MaterialBought);
+                ServiceBought.ApprovalStatus = true;
+                _context.Attach(ServiceBought).State = EntityState.Modified;
+                //_context.ServiceBought.Remove(ServiceBought);
                 await _context.SaveChangesAsync();
             }
 
