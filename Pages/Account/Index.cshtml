@@ -123,6 +123,37 @@
             </div>
             </div>*@
     </div>
+    // Matertial Seeker Start
+    <div class="card_containerx">
+        <div class="cardx">
+            <div class="vectorx">
+                <img src="~/vectors/cart_60px.png" alt="">
+            </div>
+            <div class="contentx">
+                <h1 class="titlex"><a asp-page="./Seeker/Materials/Index" class="titlex_a">RequestedM</a></h1>
+                <h3 class="valuex">@Model.PendingMaterialsSeeker.Count()</h3>
+            </div>
+        </div>
+        <div class="cardx">
+            <div class="vectorx">
+                <img src="~/vectors/transit_60px.png" alt="">
+            </div>
+            <div class="contentx">
+                <h1 class="titlex"><a asp-page="./Seeker/Materials/Progress" class="titlex_a">InTransit</a></h1>
+                <h3 class="valuex">@Model.ApprovedMaterialsSeeker.Count()</h3>
+            </div>
+        </div>
+        <div class="cardx">
+            <div class="vectorx">
+                <img src="~/vectors/delivered_60px.png" alt="">
+            </div>
+            <div class="contentx">
+                <h1 class="titlex"><a asp-page="./Seeker/Materials/Completed" class="titlex_a">Delivered</a></h1>
+                <h3 class="valuex">@Model.CompletedMaterialsSeeker.Count()</h3>
+            </div>
+        </div>
+    </div>
+    // Matertial Seeker End
 }
 <style>
     @@media screen and (max-width: 536px) {

@@ -5,22 +5,25 @@
     ViewData["Title"] = "Progress";
 }
 
-<h1>Progress</h1>
+<h1>In Transit</h1>
 
 <table class="table">
     <thead>
         <tr>
+            <th@*>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Material)
+            </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.ServiceBought[0].Service)
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Material.Name)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ServiceBought[0].Service.Name)
+             <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Material.Price)
             </th>
+@*            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Service.HourlyRate)
+            </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.ServiceBought[0].Service.HourlyRate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ServiceBought[0].Note)
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Address)
             </th>
 @*            <th>
                 @Html.DisplayNameFor(model => model.ServiceBought[0].ApprovalStatus)
@@ -38,19 +41,22 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ServiceBought) {
+@foreach (var item in Model.MaterialBought) {
         <tr>
+@*            <td>
+                @Html.DisplayFor(modelItem => item.Material.Id)
+            </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.Service.Id)
+                @Html.DisplayFor(modelItem => item.Material.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Service.Name)
+                @Html.DisplayFor(modelItem => item.Material.Price)
             </td>
-            <td>
+@*            <td>
                 @Html.DisplayFor(modelItem => item.Service.HourlyRate)
-            </td>
+            </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.Note)
+                @Html.DisplayFor(modelItem => item.Address)
             </td>
 @*            <td>
                 @Html.DisplayFor(modelItem => item.ApprovalStatus)

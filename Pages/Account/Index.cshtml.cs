@@ -37,6 +37,12 @@ namespace ServiceProject3.Pages.Account
 
 
 
+        public IList<MaterialBought> ApprovedMaterialsSeeker { get; set; }
+        public IList<MaterialBought> PendingMaterialsSeeker { get; set; }
+        public IList<MaterialBought> CompletedMaterialsSeeker { get; set; }
+
+
+
         public IList<ServiceBought> ApprovedServicesSeeker { get; set; }
         public IList<ServiceBought> PendingServicesSeeker { get; set; }
         public IList<ServiceBought> CompletedServicesSeeker { get; set; }
@@ -107,6 +113,26 @@ namespace ServiceProject3.Pages.Account
                .Include(b => b.Seeker)
                .Where(m => m.Material.UserId == current_User_Id && m.ApprovalStatus == true && m.DeliveryStatus == true)
                .ToListAsync();
+
+
+
+            //Seeker Materials
+
+            ApprovedMaterialsSeeker = await _context.MaterialBought
+                .Include(a => a.Material)
+                .Where(m => m.SeekerId == current_User_Id && m.ApprovalStatus == true && m.DeliveryStatus == false)
+                .ToListAsync();
+
+            PendingMaterialsSeeker = await _context.MaterialBought
+                .Include(a => a.Material)
+                .Where(m => m.SeekerId == current_User_Id && m.ApprovalStatus == false)
+                .ToListAsync();
+
+            CompletedMaterialsSeeker = await _context.MaterialBought
+                .Include(a => a.Material)
+                .Where(m => m.SeekerId == current_User_Id && m.ApprovalStatus == true && m.DeliveryStatus == true)
+                .ToListAsync();
+
         }
     }
 }

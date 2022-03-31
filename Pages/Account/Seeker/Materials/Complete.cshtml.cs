@@ -21,7 +21,7 @@ namespace ServiceProject3.Pages.Account.Seeker.Materials
         }
 
         [BindProperty]
-        public ServiceBought ServiceBought { get; set; }
+        public MaterialBought MaterialBought { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,16 +30,16 @@ namespace ServiceProject3.Pages.Account.Seeker.Materials
                 return NotFound();
             }
 
-            ServiceBought = await _context.ServiceBought
+            MaterialBought = await _context.MaterialBought
                 .Include(s => s.Seeker)
-                .Include(s => s.Service).FirstOrDefaultAsync(m => m.Id == id);
+                .Include(s => s.Material).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (ServiceBought == null)
+            if (MaterialBought == null)
             {
                 return NotFound();
             }
            ViewData["SeekerId"] = new SelectList(_context.Users, "Id", "Id");
-           ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "Id");
+           ViewData["MaterialId"] = new SelectList(_context.Material, "Id", "Id");
             return Page();
         }
 
@@ -51,8 +51,8 @@ namespace ServiceProject3.Pages.Account.Seeker.Materials
             {
                 return Page();
             }
-            ServiceBought.CompletionStatus = true;
-            _context.Attach(ServiceBought).State = EntityState.Modified;
+            MaterialBought.DeliveryStatus = true;
+            _context.Attach(MaterialBought).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace ServiceProject3.Pages.Account.Seeker.Materials
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ServiceBoughtExists(ServiceBought.Id))
+                if (!ServiceBoughtExists(MaterialBought.Id))
                 {
                     return NotFound();
                 }

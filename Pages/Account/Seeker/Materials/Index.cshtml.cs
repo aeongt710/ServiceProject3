@@ -23,14 +23,14 @@ namespace ServiceProject3.Pages.Account.Seeker.Materials
             _userManager = userManager;
         }
 
-        public IList<ServiceBought> ServiceBought { get; set; }
+        public IList<MaterialBought> MaterialBought { get; set; }
 
         public async Task OnGetAsync()
         {
             var current_User = _userManager.GetUserAsync(HttpContext.User).Result;
             string current_User_Id = "" + current_User.Id;
-            ServiceBought = await _context.ServiceBought
-                .Include(a => a.Service)
+            MaterialBought = await _context.MaterialBought
+                .Include(a => a.Material)
                 .Include(b => b.Seeker)
                 .Where(m => m.SeekerId == current_User_Id && m.ApprovalStatus == false).ToListAsync();
         }
