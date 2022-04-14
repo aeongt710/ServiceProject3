@@ -51,6 +51,8 @@ namespace ServiceProject3.Areas.Identity.Pages.Account.Manage
             };
         }
 
+        public string UserId { get; set; }
+
         public async Task<IActionResult> OnGetAsync()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -60,6 +62,9 @@ namespace ServiceProject3.Areas.Identity.Pages.Account.Manage
             }
 
             await LoadAsync(user);
+            var current_User = _userManager.GetUserAsync(HttpContext.User).Result;
+            string current_User_Id = "" + current_User.Id;
+            UserId = current_User_Id;
             return Page();
         }
 
