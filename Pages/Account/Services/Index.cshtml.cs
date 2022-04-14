@@ -33,7 +33,9 @@ namespace ServiceProject3.Pages.Account.Services
             var current_User = _userManager.GetUserAsync(HttpContext.User).Result;
             string current_User_Id = "" + current_User.Id;
             Service = await _context.Service
-                .Include(s => s.User).Where(m => m.UserId == current_User_Id).ToListAsync();
+                .Include(s => s.User)
+                .Include(c => c.Category)
+                .Where(m => m.UserId == current_User_Id).ToListAsync();
         }
     }
 }

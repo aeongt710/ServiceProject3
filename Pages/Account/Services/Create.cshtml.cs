@@ -26,6 +26,7 @@ namespace ServiceProject3.Pages.Account.Services
         public IActionResult OnGet()
         {
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
             Service = new Service();
             var current_User = _userManager.GetUserAsync(HttpContext.User).Result;
             UserId = "" + current_User.Id;

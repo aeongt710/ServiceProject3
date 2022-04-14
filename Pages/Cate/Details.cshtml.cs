@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.Account.Services
+namespace ServiceProject3.Pages.Cate
 {
-    [Authorize(Roles = "Provider")]
     public class DetailsModel : PageModel
     {
         private readonly ServiceProject3.Data.ApplicationDbContext _context;
@@ -21,7 +19,7 @@ namespace ServiceProject3.Pages.Account.Services
             _context = context;
         }
 
-        public Service Service { get; set; }
+        public Category Category { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,12 +28,9 @@ namespace ServiceProject3.Pages.Account.Services
                 return NotFound();
             }
 
-            Service = await _context.Service
-                .Include(s => s.User)
-                .Include(c => c.Category)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            Category = await _context.Category.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Service == null)
+            if (Category == null)
             {
                 return NotFound();
             }

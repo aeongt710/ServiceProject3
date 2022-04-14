@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,9 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.Account.Services
+namespace ServiceProject3.Pages.Cate
 {
-    [Authorize(Roles = "Provider")]
     public class EditModel : PageModel
     {
         private readonly ServiceProject3.Data.ApplicationDbContext _context;
@@ -23,7 +21,7 @@ namespace ServiceProject3.Pages.Account.Services
         }
 
         [BindProperty]
-        public Service Service { get; set; }
+        public Category Category { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -32,15 +30,12 @@ namespace ServiceProject3.Pages.Account.Services
                 return NotFound();
             }
 
-            Service = await _context.Service
-                .Include(s => s.User).FirstOrDefaultAsync(m => m.Id == id);
+            Category = await _context.Category.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Service == null)
+            if (Category == null)
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             return Page();
         }
 
@@ -53,7 +48,7 @@ namespace ServiceProject3.Pages.Account.Services
                 return Page();
             }
 
-            _context.Attach(Service).State = EntityState.Modified;
+            _context.Attach(Category).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +56,7 @@ namespace ServiceProject3.Pages.Account.Services
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ServiceExists(Service.Id))
+                if (!CategoryExists(Category.Id))
                 {
                     return NotFound();
                 }
@@ -74,9 +69,9 @@ namespace ServiceProject3.Pages.Account.Services
             return RedirectToPage("./Index");
         }
 
-        private bool ServiceExists(int id)
+        private bool CategoryExists(int id)
         {
-            return _context.Service.Any(e => e.Id == id);
+            return _context.Category.Any(e => e.Id == id);
         }
     }
 }

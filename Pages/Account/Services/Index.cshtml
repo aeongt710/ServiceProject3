@@ -23,21 +23,25 @@
             <th>
                 @Html.DisplayNameFor(model => model.Service[0].Description)
             </th>
-@*            <th>
+            <th>
+                @Html.DisplayNameFor(model => model.Service[0].Category)
+            </th>
+            @*            <th>
                 @Html.DisplayNameFor(model => model.Service[0].User)
-            </th>*@
+                </th>*@
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Service) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
+        @foreach (var item in Model.Service)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
                     @{
-                        if(item.HourlyRate==-1)
+                        if (item.HourlyRate == -1)
                         {
                             <div>Contract Based</div>
                         }
@@ -46,19 +50,22 @@
                             <div>@Html.DisplayFor(modelItem => item.HourlyRate) Rs/Hour</div>
                         }
                     }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-@*            <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
-            </td>*@
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                @*            <td>
+                    @Html.DisplayFor(modelItem => item.User.Id)
+                    </td>*@
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

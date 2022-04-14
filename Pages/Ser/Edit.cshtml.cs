@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,9 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.Account.Services
+namespace ServiceProject3.Pages.Ser
 {
-    [Authorize(Roles = "Provider")]
     public class EditModel : PageModel
     {
         private readonly ServiceProject3.Data.ApplicationDbContext _context;
@@ -33,14 +31,15 @@ namespace ServiceProject3.Pages.Account.Services
             }
 
             Service = await _context.Service
+                .Include(s => s.Category)
                 .Include(s => s.User).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Service == null)
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+           ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id");
+           ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             return Page();
         }
 
