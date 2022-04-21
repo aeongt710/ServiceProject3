@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.test
+namespace ServiceProject3.Pages.Mat
 {
     public class CreateModel : PageModel
     {
@@ -21,13 +21,14 @@ namespace ServiceProject3.Pages.test
 
         public IActionResult OnGet()
         {
+        ViewData["MaterialId"] = new SelectList(_context.Material, "Id", "Id");
+        ViewData["RiderId"] = new SelectList(_context.Users, "Id", "Id");
         ViewData["SeekerId"] = new SelectList(_context.Users, "Id", "Id");
-        ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "Id");
             return Page();
         }
 
         [BindProperty]
-        public ServiceBought ServiceBought { get; set; }
+        public MaterialBought MaterialBought { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -37,7 +38,7 @@ namespace ServiceProject3.Pages.test
                 return Page();
             }
 
-            _context.ServiceBought.Add(ServiceBought);
+            _context.MaterialBought.Add(MaterialBought);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.test
+namespace ServiceProject3.Pages.Mat
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace ServiceProject3.Pages.test
         }
 
         [BindProperty]
-        public ServiceBought ServiceBought { get; set; }
+        public MaterialBought MaterialBought { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,11 +29,12 @@ namespace ServiceProject3.Pages.test
                 return NotFound();
             }
 
-            ServiceBought = await _context.ServiceBought
-                .Include(s => s.Seeker)
-                .Include(s => s.Service).FirstOrDefaultAsync(m => m.Id == id);
+            MaterialBought = await _context.MaterialBought
+                .Include(m => m.Material)
+                .Include(m => m.Rider)
+                .Include(m => m.Seeker).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (ServiceBought == null)
+            if (MaterialBought == null)
             {
                 return NotFound();
             }
@@ -47,11 +48,11 @@ namespace ServiceProject3.Pages.test
                 return NotFound();
             }
 
-            ServiceBought = await _context.ServiceBought.FindAsync(id);
+            MaterialBought = await _context.MaterialBought.FindAsync(id);
 
-            if (ServiceBought != null)
+            if (MaterialBought != null)
             {
-                _context.ServiceBought.Remove(ServiceBought);
+                _context.MaterialBought.Remove(MaterialBought);
                 await _context.SaveChangesAsync();
             }
 

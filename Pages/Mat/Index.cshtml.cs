@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.test
+namespace ServiceProject3.Pages.Mat
 {
     public class IndexModel : PageModel
     {
@@ -19,13 +19,14 @@ namespace ServiceProject3.Pages.test
             _context = context;
         }
 
-        public IList<ServiceBought> ServiceBought { get;set; }
+        public IList<MaterialBought> MaterialBought { get;set; }
 
         public async Task OnGetAsync()
         {
-            ServiceBought = await _context.ServiceBought
-                .Include(s => s.Seeker)
-                .Include(s => s.Service).ToListAsync();
+            MaterialBought = await _context.MaterialBought
+                .Include(m => m.Material)
+                .Include(m => m.Rider)
+                .Include(m => m.Seeker).ToListAsync();
         }
     }
 }

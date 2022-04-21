@@ -8,19 +8,19 @@ using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.test3
+namespace ServiceProject3.Pages.Account.Rider
 {
-    public class DeleteModel : PageModel
+    public class DeliveredModel : PageModel
     {
         private readonly ServiceProject3.Data.ApplicationDbContext _context;
 
-        public DeleteModel(ServiceProject3.Data.ApplicationDbContext context)
+        public DeliveredModel(ServiceProject3.Data.ApplicationDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public UserDetail UserDetail { get; set; }
+        public MaterialBought MaterialBought { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,10 +29,12 @@ namespace ServiceProject3.Pages.test3
                 return NotFound();
             }
 
-            UserDetail = await _context.UserDetail
-                .Include(u => u.User).FirstOrDefaultAsync(m => m.Id == id);
+            MaterialBought = await _context.MaterialBought
+                .Include(m => m.Material)
+                .Include(m => m.Rider)
+                .Include(m => m.Seeker).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (UserDetail == null)
+            if (MaterialBought == null)
             {
                 return NotFound();
             }
@@ -46,15 +48,16 @@ namespace ServiceProject3.Pages.test3
                 return NotFound();
             }
 
-            UserDetail = await _context.UserDetail.FindAsync(id);
+            MaterialBought = await _context.MaterialBought.FindAsync(id);
 
-            if (UserDetail != null)
+            if (MaterialBought != null)
             {
-                _context.UserDetail.Remove(UserDetail);
+                MaterialBought.DeliveryStatus = true;
+                _context.Attach(MaterialBought).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("././Index");
         }
     }
 }

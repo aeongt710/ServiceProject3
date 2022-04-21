@@ -155,6 +155,42 @@
     </div>
     // Matertial Seeker End
 }
+
+@if (User.IsInRole("Rider"))
+{
+
+    // Matertial Seeker Start
+    <div class="card_containerx">
+        <div class="cardx">
+            <div class="vectorx">
+                <img src="~/vectors/cart_60px.png" alt="">
+            </div>
+            <div class="contentx">
+                <h1 class="titlex"><a asp-page="./Rider/Index" class="titlex_a">All Materials</a></h1>
+                <h3 class="valuex">@Model.RiderAllMaterials.Count()</h3>
+            </div>
+        </div>
+        <div class="cardx">
+            <div class="vectorx">
+                <img src="~/vectors/transit_60px.png" alt="">
+            </div>
+            <div class="contentx">
+                <h1 class="titlex"><a asp-page="./Rider/InTransit" class="titlex_a">InTransit</a></h1>
+                <h3 class="valuex">@Model.RiderPickUpMaterials.Count()</h3>
+            </div>
+        </div>
+        <div class="cardx">
+            <div class="vectorx">
+                <img src="~/vectors/delivered_60px.png" alt="">
+            </div>
+            <div class="contentx">
+                <h1 class="titlex"><a asp-page="./Rider/History" class="titlex_a">Delivered</a></h1>
+                <h3 class="valuex">@Model.RiderDeliveredMaterials.Count()</h3>
+            </div>
+        </div>
+    </div>
+    // Matertial Seeker End
+}
 <style>
     @@media screen and (max-width: 536px) {
         .card_containerx {

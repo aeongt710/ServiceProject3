@@ -117,6 +117,10 @@ namespace ServiceProject3.Areas.Identity.Pages.Account
                     {
                         await _userManager.AddToRoleAsync(await _userManager.FindByIdAsync(user.Id), "Seeker");
                     }
+                    else if (number == "3")
+                    {
+                        await _userManager.AddToRoleAsync(await _userManager.FindByIdAsync(user.Id), "Rider");
+                    }
                     UserDetail = new UserDetail();
                     UserDetail.UserId = Input.Email;
                     IdentityUser a= _userManager.Users.FirstOrDefault(m => m.UserName == Input.Email);

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.test3
+namespace ServiceProject3.Pages.Account.Rider
 {
     public class IndexModel : PageModel
     {
@@ -19,12 +19,15 @@ namespace ServiceProject3.Pages.test3
             _context = context;
         }
 
-        public IList<UserDetail> UserDetail { get;set; }
+        public IList<MaterialBought> MaterialBought { get;set; }
 
         public async Task OnGetAsync()
         {
-            UserDetail = await _context.UserDetail
-                .Include(u => u.User).ToListAsync();
+            MaterialBought = await _context.MaterialBought
+                .Include(a => a.Material)
+                .Include(s => s.Seeker)
+                .Where(m => m.RiderId == null && m.ApprovalStatus == true && m.PickUp == false)
+                .ToListAsync();
         }
     }
 }

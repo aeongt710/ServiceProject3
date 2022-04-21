@@ -5,13 +5,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Requested</h1>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                Service @Html.DisplayNameFor(model => model.MaterialBought[0].Material.Name)
+                Material @Html.DisplayNameFor(model => model.MaterialBought[0].Material.Name)
             </th>
             <th>
                 Seeker @Html.DisplayNameFor(model => model.MaterialBought[0].Seeker.Email)
@@ -67,7 +67,7 @@
 *@            <td>
 @*                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |*@
-                <a asp-page="./Approve" asp-route-id="@item.Id">Deliver</a>
+                <a asp-page="./Approve" asp-route-id="@item.Id">Hand Over</a>
             </td>
         </tr>
 }

@@ -9,6 +9,9 @@ namespace ServiceProject3.Models
         public Material Material { get; set; }
         public string SeekerId { get; set; }
         public IdentityUser Seeker { get; set; }
+        public string RiderId { get; set; }
+        public IdentityUser Rider { get; set; }
+        public bool PickUp { get; set; }
         public string Address { get; set; }
         public bool ApprovalStatus { get; set; }
         public bool DeliveryStatus { get; set; }

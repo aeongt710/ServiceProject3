@@ -36,6 +36,11 @@ namespace ServiceProject3.Pages.Account
         public IList<MaterialBought> ProviderDeliveredMaterials { get; set; }
 
 
+        public IList<MaterialBought> RiderAllMaterials { get; set; }
+        public IList<MaterialBought> RiderPickUpMaterials { get; set; }
+        public IList<MaterialBought> RiderDeliveredMaterials { get; set; }
+
+
 
         public IList<MaterialBought> ApprovedMaterialsSeeker { get; set; }
         public IList<MaterialBought> PendingMaterialsSeeker { get; set; }
@@ -50,6 +55,7 @@ namespace ServiceProject3.Pages.Account
         {
             Service = await _context.Service
                 .Include(s => s.User).ToListAsync();
+
             var current_User = _userManager.GetUserAsync(HttpContext.User).Result;
             string current_User_Id = "" + current_User.Id;
 
@@ -133,6 +139,24 @@ namespace ServiceProject3.Pages.Account
                 .Where(m => m.SeekerId == current_User_Id && m.ApprovalStatus == true && m.DeliveryStatus == true)
                 .ToListAsync();
 
+            //Rider Materials
+
+            RiderAllMaterials = await _context.MaterialBought
+                .Include(a => a.Material)
+                .Where(m => m.RiderId == null && m.ApprovalStatus == false && m.DeliveryStatus == false)
+                .ToListAsync();
+
+            RiderPickUpMaterials = await _context.MaterialBought
+                .Include(a => a.Material)
+                .Include(s => s.Seeker)
+                .Where(m => m.RiderId == current_User_Id && m.ApprovalStatus == true && m.PickUp == true && m.DeliveryStatus == false)
+                .ToListAsync();
+
+            RiderDeliveredMaterials = await _context.MaterialBought
+                .Include(a => a.Material)
+                .Include(s => s.Seeker)
+                .Where(m => m.RiderId == current_User_Id && m.ApprovalStatus == true && m.PickUp == true && m.DeliveryStatus == true)
+                .ToListAsync();
         }
     }
 }

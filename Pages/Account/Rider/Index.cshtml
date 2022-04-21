@@ -1,0 +1,91 @@
+﻿@page
+@model ServiceProject3.Pages.Account.Rider.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">To Pickup</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+@*            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Material)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Material.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Seeker.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Seeker.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Address)
+            </th>
+@*            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Seeker)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Rider)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].ApprovalStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].DeliveryStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Review)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.MaterialBought) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seeker.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seeker.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+@*            <td>
+                @Html.DisplayFor(modelItem => item.ApprovalStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Review)
+            </td>*@
+            <td>
+@*                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>*@
+                <a asp-page="./PickUp" asp-route-id="@item.Id">PickUp</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

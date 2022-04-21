@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ServiceProject3.Data;
 using ServiceProject3.Models;
 
-namespace ServiceProject3.Pages.test3
+namespace ServiceProject3.Pages.Mat
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace ServiceProject3.Pages.test3
         }
 
         [BindProperty]
-        public UserDetail UserDetail { get; set; }
+        public MaterialBought MaterialBought { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,14 +30,18 @@ namespace ServiceProject3.Pages.test3
                 return NotFound();
             }
 
-            UserDetail = await _context.UserDetail
-                .Include(u => u.User).FirstOrDefaultAsync(m => m.Id == id);
+            MaterialBought = await _context.MaterialBought
+                .Include(m => m.Material)
+                .Include(m => m.Rider)
+                .Include(m => m.Seeker).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (UserDetail == null)
+            if (MaterialBought == null)
             {
                 return NotFound();
             }
-           ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+           ViewData["MaterialId"] = new SelectList(_context.Material, "Id", "Id");
+           ViewData["RiderId"] = new SelectList(_context.Users, "Id", "Id");
+           ViewData["SeekerId"] = new SelectList(_context.Users, "Id", "Id");
             return Page();
         }
 
@@ -50,7 +54,7 @@ namespace ServiceProject3.Pages.test3
                 return Page();
             }
 
-            _context.Attach(UserDetail).State = EntityState.Modified;
+            _context.Attach(MaterialBought).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +62,7 @@ namespace ServiceProject3.Pages.test3
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserDetailExists(UserDetail.Id))
+                if (!MaterialBoughtExists(MaterialBought.Id))
                 {
                     return NotFound();
                 }
@@ -71,9 +75,9 @@ namespace ServiceProject3.Pages.test3
             return RedirectToPage("./Index");
         }
 
-        private bool UserDetailExists(int id)
+        private bool MaterialBoughtExists(int id)
         {
-            return _context.UserDetail.Any(e => e.Id == id);
+            return _context.MaterialBought.Any(e => e.Id == id);
         }
     }
 }

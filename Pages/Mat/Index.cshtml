@@ -1,5 +1,5 @@
 ﻿@page
-@model ServiceProject3.Pages.test.IndexModel
+@model ServiceProject3.Pages.Mat.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -14,46 +14,58 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ServiceBought[0].Service)
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Material)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ServiceBought[0].Seeker)
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Seeker)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ServiceBought[0].Note)
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Rider)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ServiceBought[0].ApprovalStatus)
+                @Html.DisplayNameFor(model => model.MaterialBought[0].PickUp)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ServiceBought[0].CompletionStatus)
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Address)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ServiceBought[0].Rating)
+                @Html.DisplayNameFor(model => model.MaterialBought[0].ApprovalStatus)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ServiceBought[0].Review)
+                @Html.DisplayNameFor(model => model.MaterialBought[0].DeliveryStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Review)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ServiceBought) {
+@foreach (var item in Model.MaterialBought) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Service.Id)
+                @Html.DisplayFor(modelItem => item.Material.Id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Seeker.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Note)
+                @Html.DisplayFor(modelItem => item.Rider.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickUp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ApprovalStatus)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CompletionStatus)
+                @Html.DisplayFor(modelItem => item.DeliveryStatus)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Rating)
