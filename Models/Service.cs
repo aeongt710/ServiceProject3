@@ -9,7 +9,7 @@ namespace ServiceProject3.Models
         public string Name { get; set; }
         public int HourlyRate { get; set; }
         public string Description { get; set; }
-        public string UserId  { get; set; }
+        public string UserId { get; set; }
         public IdentityUser User { get; set; }
 
         public int CategoryId { get; set; }

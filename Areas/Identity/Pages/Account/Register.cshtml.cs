@@ -120,6 +120,9 @@ namespace ServiceProject3.Areas.Identity.Pages.Account
                     else if (number == "3")
                     {
                         await _userManager.AddToRoleAsync(await _userManager.FindByIdAsync(user.Id), "Rider");
+                    }else if(number == "4")
+                    {
+                        await _userManager.AddToRoleAsync(await _userManager.FindByIdAsync(user.Id), "Admin");
                     }
                     UserDetail = new UserDetail();
                     UserDetail.UserId = Input.Email;

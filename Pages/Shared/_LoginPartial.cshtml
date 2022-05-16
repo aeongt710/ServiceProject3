@@ -43,6 +43,10 @@
             {
               <div class="checker">Provider</div>
             }
+            @if (User.IsInRole("Admin"))
+            {
+              <div class="checker">Admin</div>
+            }
         <div class="dropdown">
 
 
