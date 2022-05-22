@@ -19,5 +19,6 @@ namespace ServiceProject3.Data
         public DbSet<ServiceProject3.Models.MaterialBought> MaterialBought { get; set; }
         public DbSet<ServiceProject3.Models.UserDetail> UserDetail { get; set; }
         public DbSet<ServiceProject3.Models.Category> Category { get; set; }
+        public DbSet<ServiceProject3.Models.MaterialCategory> MaterialCategory { get; set; }
     }
 }

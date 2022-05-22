@@ -108,22 +108,13 @@ namespace ServiceProject3.Areas.Identity.Pages.Account
 
                     var number = Request.Form["number"];
                     if (number == "1")
-                    {
-                        //IdentityRole role = _roleManager.Roles.FirstOrDefault(m => m.Name == "Provider");
-                        //if (role != null)
                         await _userManager.AddToRoleAsync(await _userManager.FindByIdAsync(user.Id), "Provider");
-                    }
                     else if (number == "2")
-                    {
                         await _userManager.AddToRoleAsync(await _userManager.FindByIdAsync(user.Id), "Seeker");
-                    }
                     else if (number == "3")
-                    {
                         await _userManager.AddToRoleAsync(await _userManager.FindByIdAsync(user.Id), "Rider");
-                    }else if(number == "4")
-                    {
+                    else if(number == "4")
                         await _userManager.AddToRoleAsync(await _userManager.FindByIdAsync(user.Id), "Admin");
-                    }
                     UserDetail = new UserDetail();
                     UserDetail.UserId = Input.Email;
                     IdentityUser a= _userManager.Users.FirstOrDefault(m => m.UserName == Input.Email);
@@ -131,7 +122,6 @@ namespace ServiceProject3.Areas.Identity.Pages.Account
                     if (formFile != null)
                     {
                         string uploadsFolder = Path.Combine(_environment.WebRootPath, "images");
-                        //uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProfileImage.FileName;
                         string filePath = Path.Combine(uploadsFolder, UserDetail.UserId + ".png");
                         using (var fileStream = new FileStream(filePath, FileMode.Create))
                         {

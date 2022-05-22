@@ -43,8 +43,6 @@ namespace ServiceProject3.Pages.Account.Services
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-
-
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -59,7 +57,6 @@ namespace ServiceProject3.Pages.Account.Services
             }
             var current_User = _userManager.GetUserAsync(HttpContext.User).Result;
             Service.UserId = "" + current_User.Id;
-            //Service.UserId = UserId;
             _context.Service.Add(Service);
             await _context.SaveChangesAsync();
 

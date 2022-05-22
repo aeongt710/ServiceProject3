@@ -28,7 +28,7 @@ namespace ServiceProject3.Pages.Account.Materials
         public async Task OnGetAsync()
         {
             Material = await _context.Material
-                .Include(m => m.User).ToListAsync();
+                .Include(m => m.User).Include(a=>a.MaterialCategory).ToListAsync();
             var current_User = _userManager.GetUserAsync(HttpContext.User).Result;
             string current_User_Id = "" + current_User.Id;
             Material = await _context.Material

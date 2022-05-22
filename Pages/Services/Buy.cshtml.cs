@@ -47,7 +47,6 @@ namespace ServiceProject3.Pages.Services
             {
                 return Page();
             }
-
             _context.ServiceBought.Add(ServiceBought);
             await _context.SaveChangesAsync();
 
