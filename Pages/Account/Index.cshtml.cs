@@ -143,8 +143,8 @@ namespace ServiceProject3.Pages.Account
 
             RiderAllMaterials = await _context.MaterialBought
                 .Include(a => a.Material)
-                .Where(m => m.RiderId == null && m.ApprovalStatus == false && m.DeliveryStatus == false)
-                .ToListAsync();
+                .Where(m => m.RiderId == null && m.ApprovalStatus == true && m.DeliveryStatus == false)
+                .ToListAsync();// from index m.RiderId == null && m.ApprovalStatus == true && m.PickUp == false
 
             RiderPickUpMaterials = await _context.MaterialBought
                 .Include(a => a.Material)
