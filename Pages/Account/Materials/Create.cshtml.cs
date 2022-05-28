@@ -23,7 +23,8 @@ namespace ServiceProject3.Pages.Account.Materials
 
         public IActionResult OnGet()
         {
-        ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            SubCats = _context.MaterialSubCategory.ToList();
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             ViewData["MaterialCategoryId"] = new SelectList(_context.MaterialCategory, "Id", "Name");
             var current_User = _userManager.GetUserAsync(HttpContext.User).Result;
             UserId = "" + current_User.Id;
@@ -34,6 +35,8 @@ namespace ServiceProject3.Pages.Account.Materials
 
         [BindProperty]
         public Material Material { get; set; }
+        [BindProperty]
+        public IList<MaterialSubCategory> SubCats { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()

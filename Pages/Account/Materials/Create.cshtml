@@ -28,17 +28,19 @@
                 <input asp-for="Material.Description" class="form-control" />
                 <span asp-validation-for="Material.Description" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Material.MaterialCategoryId" class="control-label"></label>
-                <select asp-for="Material.MaterialCategoryId" class="form-control" asp-items="ViewBag.MaterialCategoryId"></select>
+                <select asp-for="Material.MaterialCategoryId" id="mainCate" onchange="changeFunction(this.value);" class="form-control" asp-items="ViewBag.MaterialCategoryId"></select>
             </div>
-                        <div class="form-group">
-                <label asp-for="Material.MaterialCategoryId" class="control-label"></label>
-                <select asp-for="Material.MaterialCategoryId" class="form-control" asp-items="ViewBag.MaterialCategoryId"></select>
+            <div class="form-group" id="subcatediv">
+                <label class="control-label">Sub Category</label>
+                <select id="subcate" required class="form-control">
+                </select>
             </div>
             @*            <div class="form-group">
                 <label asp-for="Material.UserId" class="control-label"></label>
-                <select asp-for="Material.UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+                <select asp-for="Material.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
                 </div>*@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -47,6 +49,29 @@
     </div>
 </div>
 
+<script type="text/javascript">
+        function changeFunction(value){
+            var x =@Html.Raw(Json.Serialize(Model.SubCats.ToArray()));
+            console.log(x);
+             $('#subcate').empty();
+            for (let i=0;i<x.length;i++){
+                if(x[i].materialCategoryId==value){
+                    console.log(x[i]);
+                    $('#subcate').append($('<option>', {
+                        value: x[i].id,
+                        text: x[i].name
+                    }));
+                }
+
+            }
+
+        }
+
+        window.onload = (event) => {
+            var x =@Html.Raw(Json.Serialize(Model.SubCats.ToArray()));
+            changeFunction(x[0].materialCategoryId);
+    };
+</script>
 <div>
     <a asp-page="Index">Back to List</a>
 </div>
