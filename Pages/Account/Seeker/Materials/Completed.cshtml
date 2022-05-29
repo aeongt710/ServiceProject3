@@ -12,9 +12,9 @@
 <table class="table">
     <thead>
         <tr>
-@*            <th>
+            @*            <th>
                 @Html.DisplayNameFor(model => model.MaterialBought[0].Service)
-            </th>*@
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.MaterialBought[0].Material.Name)
             </th>
@@ -22,17 +22,26 @@
                 @Html.DisplayNameFor(model => model.MaterialBought[0].Material.Price)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].TotalPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialBought[0].SubCategory)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.MaterialBought[0].Address)
             </th>
-@*            <th>
+            @*            <th>
                 @Html.DisplayNameFor(model => model.ServiceBought[0].ApprovalStatus)
-            </th>
-            <th>
+                </th>
+                <th>
                 @Html.DisplayNameFor(model => model.ServiceBought[0].CompletionStatus)
-            </th>
-            <th>
+                </th>
+                <th>
                 @Html.DisplayNameFor(model => model.ServiceBought[0].Rating)
-            </th>*@
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.MaterialBought[0].Review)
             </th>
@@ -40,38 +49,48 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.MaterialBought) {
-        <tr>
-@*            <td>
-                @Html.DisplayFor(modelItem => item.Service.Id)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Material.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Material.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-@*            <td>
-                @Html.DisplayFor(modelItem => item.ApprovalStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompletionStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Review)
-            </td>
-            <td>
-                @*<a asp-page="./Complete" asp-route-id="@item.Id">Mark Complete</a>*@
-@*                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>*@
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.MaterialBought)
+        {
+            <tr>
+                @*            <td>
+                    @Html.DisplayFor(modelItem => item.Service.Id)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Material.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Material.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubCategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                @*            <td>
+                    @Html.DisplayFor(modelItem => item.ApprovalStatus)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.CompletionStatus)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Review)
+                </td>
+                <td>
+                    @*<a asp-page="./Complete" asp-route-id="@item.Id">Mark Complete</a>*@
+                    @*                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

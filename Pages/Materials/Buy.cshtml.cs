@@ -23,15 +23,27 @@ namespace ServiceProject3.Pages.Materials
 
         public IActionResult OnGet(string id)
         {
-            
             MaterialBought = new MaterialBought();
             MaterialBought.MaterialId = Int32.Parse(id);
             mid = Int32.Parse(id);
             ViewData["SeekerId"] = new SelectList(_context.Users, "Id", "Id");
             ViewData["MaterialId"] = new SelectList(_context.Material, "Id", "Id");
+
+
+            MaterialForCate = _context.Material.FirstOrDefault(a=>a.Id == mid);
+            MaterialBought.TotalPrice = MaterialForCate.Price;
+            MaterialBought.Quantity = 1;
+            UnitPrice = MaterialForCate.Price;
+            SubCats = _context.MaterialSubCategory.Where(b=>b.MaterialCategoryId== MaterialForCate.MaterialCategoryId).ToList();
             return Page();
         }
+        [BindProperty]
+        public int UnitPrice { get; set; }
+        [BindProperty]
+        public Material MaterialForCate { get; set; }
 
+        [BindProperty]
+        public IList<MaterialSubCategory> SubCats { get; set; }
         [BindProperty]
         public MaterialBought MaterialBought { get; set; }
 
@@ -46,10 +58,10 @@ namespace ServiceProject3.Pages.Materials
             MaterialBought.ApprovalStatus = false;
             MaterialBought.DeliveryStatus = false;
             MaterialBought.Rating = -1;
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
 
             _context.MaterialBought.Add(MaterialBought);
             await _context.SaveChangesAsync();

@@ -36,6 +36,7 @@ namespace ServiceProject3.Pages.Account.PendingMaterials
             MaterialBought = await _context.MaterialBought
                 .Include(a => a.Material)
                 .Include(b => b.Seeker)
+                .Include(c => c.Rider)
                 .Where(m => m.Material.UserId == current_User_Id && m.ApprovalStatus == true && m.DeliveryStatus==false).ToListAsync();
         }
     }
