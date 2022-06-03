@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServiceProject3.Models
 {
@@ -7,6 +8,7 @@ namespace ServiceProject3.Models
         public int Id { get; set; }
 
         public string Name { get; set; }
+        [Range(1,100000)]
         public int Price { get; set; }
         public string Description { get; set; }
         public string UserId { get; set; }
