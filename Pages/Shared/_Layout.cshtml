@@ -9,26 +9,26 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav id="navheader" style="background-color:#1A1A1A; color:#0366d6;" class="navbar navbar-expand-sm  navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Service Seeking Paksitan</a>
+                <a class="navbar-brand" style="color:#0366d6;" asp-area="" asp-page="/Index">Service Seeking Paksitan</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        <li class="nav-item" style="color:#0366d6;">
+                            <a class="nav-link " asp-area="" style="color:#0366d6;" asp-page="/Index">Home</a>
                         </li>
 
                         @if (User.IsInRole("Seeker"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Services/Index">Services</a>
+                                <a class="nav-link text-dark" style="color:#0366d6;" asp-area="" asp-page="/Services/Index">Services</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Materials/Index">Materials</a>
+                                <a class="nav-link text-dark" style="color:#0366d6;" asp-area="" asp-page="/Materials/Index">Materials</a>
                             </li>
 
                         }
@@ -36,10 +36,10 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Cate/Index">Service Categories</a>
+                                <a class="nav-link text-dark" style="color:#0366d6;" asp-area="" asp-page="/Cate/Index">Service Categories</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/MatCate/Index">Material Categories</a>
+                                <a class="nav-link text-dark"  style="color:#0366d6;" asp-area="" asp-page="/MatCate/Index">Material Categories</a>
                             </li>
 
                         }

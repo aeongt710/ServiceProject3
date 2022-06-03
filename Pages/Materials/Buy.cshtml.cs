@@ -33,6 +33,7 @@ namespace ServiceProject3.Pages.Materials
             MaterialForCate = _context.Material.FirstOrDefault(a=>a.Id == mid);
             MaterialBought.TotalPrice = MaterialForCate.Price;
             MaterialBought.Quantity = 1;
+            MaterialBought.Material = _context.Material.FirstOrDefault(a => a.Id == MaterialBought.MaterialId);
             UnitPrice = MaterialForCate.Price;
             SubCats = _context.MaterialSubCategory.Where(b=>b.MaterialCategoryId== MaterialForCate.MaterialCategoryId).ToList();
             return Page();

@@ -32,7 +32,10 @@
                 @Html.DisplayNameFor(model => model.MaterialBought[0].Address)
             </th>
             <th>
-                Rider Details
+                Rider Email
+            </th>
+            <th>
+                Rider Phone
             </th>
             @*            <th>
                 @Html.DisplayNameFor(model => model.ServiceBought[0].ApprovalStatus)
@@ -84,6 +87,9 @@
                 {
                     <td>
                         @Html.DisplayFor(modelItem => item.Rider.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rider.PhoneNumber)
                     </td>
                 }
 

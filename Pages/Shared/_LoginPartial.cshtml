@@ -51,13 +51,13 @@
 
 
             
-            <button class="btn  dropdown-toggle" style="background-color:none;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn  dropdown-toggle" style="background-color:none;color:#0366d6;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 @User.Identity.Name
             </button>
 
             <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
 
-                <a class="nav-link text-dark nav-link_color" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Account</a>
+                <a class="nav-link text-dark nav-link_color"  asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Account</a>
                 @*@if (User.IsInRole("Provider"))*@
                 
                 <a class="nav-link text-dark nav-link_color" asp-area="" asp-page="/Account/Index">Dashboard</a>

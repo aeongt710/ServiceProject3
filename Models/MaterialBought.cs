@@ -20,6 +20,7 @@ namespace ServiceProject3.Models
         public int Rating { get; set; }
         public string Review { get; set; }
         public string? SubCategory { get; set; }
+        [Display(Name ="Duration")]
         public string? Note { get; set; }
         [Required]
         [Range(1,100000)]
