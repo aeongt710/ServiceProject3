@@ -50,6 +50,20 @@ namespace ServiceProject3.Pages.Account.Materials
             _context.Material.Add(Material);
             await _context.SaveChangesAsync();
 
+            IList<MaterialSubCategory> subCategories = _context.MaterialSubCategory
+                .Where(a => a.MaterialCategoryId == Material.MaterialCategoryId).ToList();
+
+            foreach (var item in subCategories)
+            {
+                _context.Add(new MaterialSubCatePrice()
+                {
+                    MaterialId = Material.Id,
+                    MaterialSubCategoryId=item.Id,
+                    Price = 0
+                });
+            }
+            await _context.SaveChangesAsync();
+
             return RedirectToPage("./Index");
         }
     }
