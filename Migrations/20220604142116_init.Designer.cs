@@ -10,15 +10,15 @@ using ServiceProject3.Data;
 namespace ServiceProject3.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220414051204_Cate_class_Added")]
-    partial class Cate_class_Added
+    [Migration("20220604142116_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.15")
+                .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -242,6 +242,9 @@ namespace ServiceProject3.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("MaterialCategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -252,6 +255,8 @@ namespace ServiceProject3.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MaterialCategoryId");
 
                     b.HasIndex("UserId");
 
@@ -266,6 +271,7 @@ namespace ServiceProject3.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("ApprovalStatus")
@@ -277,22 +283,102 @@ namespace ServiceProject3.Migrations
                     b.Property<int>("MaterialId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PickUp")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
                     b.Property<string>("Review")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("RiderId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("SeekerId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SubCategory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TotalPrice")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("MaterialId");
 
+                    b.HasIndex("RiderId");
+
                     b.HasIndex("SeekerId");
 
                     b.ToTable("MaterialBought");
+                });
+
+            modelBuilder.Entity("ServiceProject3.Models.MaterialCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MaterialCategory");
+                });
+
+            modelBuilder.Entity("ServiceProject3.Models.MaterialSubCatePrice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("MaterialId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MaterialSubCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaterialId");
+
+                    b.HasIndex("MaterialSubCategoryId");
+
+                    b.ToTable("MaterialSubCatePrice");
+                });
+
+            modelBuilder.Entity("ServiceProject3.Models.MaterialSubCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("MaterialCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaterialCategoryId");
+
+                    b.ToTable("MaterialSubCategory");
                 });
 
             modelBuilder.Entity("ServiceProject3.Models.Service", b =>
@@ -301,6 +387,9 @@ namespace ServiceProject3.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -315,6 +404,8 @@ namespace ServiceProject3.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("UserId");
 
@@ -431,9 +522,17 @@ namespace ServiceProject3.Migrations
 
             modelBuilder.Entity("ServiceProject3.Models.Material", b =>
                 {
+                    b.HasOne("ServiceProject3.Models.MaterialCategory", "MaterialCategory")
+                        .WithMany()
+                        .HasForeignKey("MaterialCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
+
+                    b.Navigation("MaterialCategory");
 
                     b.Navigation("User");
                 });
@@ -446,20 +545,60 @@ namespace ServiceProject3.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Rider")
+                        .WithMany()
+                        .HasForeignKey("RiderId");
+
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Seeker")
                         .WithMany()
                         .HasForeignKey("SeekerId");
 
                     b.Navigation("Material");
 
+                    b.Navigation("Rider");
+
                     b.Navigation("Seeker");
+                });
+
+            modelBuilder.Entity("ServiceProject3.Models.MaterialSubCatePrice", b =>
+                {
+                    b.HasOne("ServiceProject3.Models.Material", "Material")
+                        .WithMany()
+                        .HasForeignKey("MaterialId");
+
+                    b.HasOne("ServiceProject3.Models.MaterialSubCategory", "MaterialSubCategory")
+                        .WithMany()
+                        .HasForeignKey("MaterialSubCategoryId");
+
+                    b.Navigation("Material");
+
+                    b.Navigation("MaterialSubCategory");
+                });
+
+            modelBuilder.Entity("ServiceProject3.Models.MaterialSubCategory", b =>
+                {
+                    b.HasOne("ServiceProject3.Models.MaterialCategory", "MaterialCategory")
+                        .WithMany()
+                        .HasForeignKey("MaterialCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MaterialCategory");
                 });
 
             modelBuilder.Entity("ServiceProject3.Models.Service", b =>
                 {
+                    b.HasOne("ServiceProject3.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
+
+                    b.Navigation("Category");
 
                     b.Navigation("User");
                 });

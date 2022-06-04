@@ -70,7 +70,7 @@ namespace ServiceProject3.Pages.Account.Materials.ManageSubCatePrices
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index", new {Id= MaterialSubCatePrice.MaterialId});
         }
 
         private bool MaterialSubCatePriceExists(int id)

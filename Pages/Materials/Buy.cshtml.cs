@@ -36,8 +36,18 @@ namespace ServiceProject3.Pages.Materials
             MaterialBought.Material = _context.Material.FirstOrDefault(a => a.Id == MaterialBought.MaterialId);
             UnitPrice = MaterialForCate.Price;
             SubCats = _context.MaterialSubCategory.Where(b=>b.MaterialCategoryId== MaterialForCate.MaterialCategoryId).ToList();
+
+
+            subCatePrices = _context.MaterialSubCatePrice
+                .Where(a=> a.MaterialId == MaterialBought.MaterialId)
+                .ToList();
+
             return Page();
         }
+
+        [BindProperty]
+        public IList<MaterialSubCatePrice> subCatePrices { get; set; }
+
         [BindProperty]
         public int UnitPrice { get; set; }
         [BindProperty]

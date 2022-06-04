@@ -16,9 +16,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Material[0].Name)
             </th>
-            <th>
+            @*            <th>
                 @Html.DisplayNameFor(model => model.Material[0].Price)
-            </th>
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Material[0].Description)
             </th>
@@ -28,6 +28,9 @@
             @*            <th>
                 @Html.DisplayNameFor(model => model.Material[0].User)
                 </th>*@
+            <th>
+                Manage Price
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -38,18 +41,21 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                <td>
+                @*                <td>
                     @Html.DisplayFor(modelItem => item.Price)
-                </td>
+                    </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-                                <td>
+                <td>
                     @Html.DisplayFor(modelItem => item.MaterialCategory.Name)
                 </td>
                 @*            <td>
                     @Html.DisplayFor(modelItem => item.User.Id)
                     </td>*@
+                <td>
+                    <a asp-page="./ManageSubCatePrices/Index" asp-route-id="@item.Id">Manage Prices</a>
+                </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |

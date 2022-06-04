@@ -334,6 +334,31 @@ namespace ServiceProject3.Migrations
                     b.ToTable("MaterialCategory");
                 });
 
+            modelBuilder.Entity("ServiceProject3.Models.MaterialSubCatePrice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("MaterialId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MaterialSubCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaterialId");
+
+                    b.HasIndex("MaterialSubCategoryId");
+
+                    b.ToTable("MaterialSubCatePrice");
+                });
+
             modelBuilder.Entity("ServiceProject3.Models.MaterialSubCategory", b =>
                 {
                     b.Property<int>("Id")
@@ -531,6 +556,21 @@ namespace ServiceProject3.Migrations
                     b.Navigation("Rider");
 
                     b.Navigation("Seeker");
+                });
+
+            modelBuilder.Entity("ServiceProject3.Models.MaterialSubCatePrice", b =>
+                {
+                    b.HasOne("ServiceProject3.Models.Material", "Material")
+                        .WithMany()
+                        .HasForeignKey("MaterialId");
+
+                    b.HasOne("ServiceProject3.Models.MaterialSubCategory", "MaterialSubCategory")
+                        .WithMany()
+                        .HasForeignKey("MaterialSubCategoryId");
+
+                    b.Navigation("Material");
+
+                    b.Navigation("MaterialSubCategory");
                 });
 
             modelBuilder.Entity("ServiceProject3.Models.MaterialSubCategory", b =>

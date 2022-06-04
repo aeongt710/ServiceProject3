@@ -21,11 +21,12 @@ namespace ServiceProject3.Pages.Account.Materials.ManageSubCatePrices
 
         public IList<MaterialSubCatePrice> MaterialSubCatePrice { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int Id)
         {
             MaterialSubCatePrice = await _context.MaterialSubCatePrice
                 .Include(m => m.Material)
-                .Include(m => m.MaterialSubCategory).ToListAsync();
+                .Include(m => m.MaterialSubCategory)
+                .Where(a=> a.MaterialId == Id).ToListAsync();
         }
     }
 }
