@@ -63,6 +63,7 @@ namespace ServiceProject3.Pages.Materials
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
+            MaterialBought.SubCategory=_context.MaterialSubCategory.Where(a=>a.Id==Int32.Parse(MaterialBought.SubCategory)).FirstOrDefault().Name;
             var current_User = _userManager.GetUserAsync(HttpContext.User).Result;
             string current_User_Id = "" + current_User.Id;
             MaterialBought.SeekerId = current_User_Id;

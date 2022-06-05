@@ -63,7 +63,29 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     /*background-color: #f1f1f1;*/
-    background-color: #D7582B;
+    /* background-color: #D7582B; */
+
+
+    color: #666;
+    /*font: 16px/26px "Raleway", sans-serif;*/
+    /*text-align: center;*/
+    /*height: 100%;*/
+    /*    background: -moz-linear-gradient(270deg, rgba(34,46,64,1) 0%, rgba(81,195,184,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(34,46,64,1)), color-stop(100%, rgba(81,195,184,1)));
+    background: -webkit-linear-gradient(270deg, rgba(34,46,64,1) 0%, rgba(81,195,184,1) 100%);
+    background: linear-gradient(180deg, rgba(34,46,64,1) 0%, rgba(81,195,184,1) 100%);*/
+    /*overflow: hidden;*/
+    font-family: 'Poppins', sans-serif;
+    color: #212112;
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
+    background-position: center;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: repeat;
+    background-repeat-x: repeat;
+    background-repeat-y: repeat;
+    background-size: 12%;
+    background-color: #fff;
 }
 .footer {
   position: absolute;
