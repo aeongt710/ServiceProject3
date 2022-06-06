@@ -13,7 +13,7 @@ namespace ServiceProject3.Models
         public string Description { get; set; }
         public string UserId { get; set; }
         public IdentityUser User { get; set; }
-        public int MaterialCategoryId { get; set; }
+        public int? MaterialCategoryId { get; set; }
         public MaterialCategory MaterialCategory { get; set; }
     }
 }

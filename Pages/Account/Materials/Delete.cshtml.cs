@@ -50,6 +50,10 @@ namespace ServiceProject3.Pages.Account.Materials
 
             if (Material != null)
             {
+                IList<MaterialSubCatePrice> list = _context.MaterialSubCatePrice.Where(a => a.MaterialId == Material.Id).ToList();
+                //foreach (var item in list)
+                    _context.RemoveRange(list);
+                await _context.SaveChangesAsync();
                 _context.Material.Remove(Material);
                 await _context.SaveChangesAsync();
             }

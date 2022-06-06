@@ -22,5 +22,13 @@ namespace ServiceProject3.Data
         public DbSet<ServiceProject3.Models.MaterialCategory> MaterialCategory { get; set; }
         public DbSet<MaterialSubCategory> MaterialSubCategory { get; set; }
         public DbSet<ServiceProject3.Models.MaterialSubCatePrice> MaterialSubCatePrice { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
     }
+
+
+
 }

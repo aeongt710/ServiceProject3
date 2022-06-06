@@ -2,8 +2,12 @@
 @model ServiceProject3.Pages.Account.IndexModel
 @{
 }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 @if (User.IsInRole("Provider"))
 {
+    
+
+
     <h3>Services</h3>
     <hr />
     <div class="card_containerx">
@@ -44,7 +48,7 @@
             </div>
         </div>
     </div>
-        <h3>Materials</h3>
+    <h3>Materials</h3>
     <hr />
     // Provider   Materials Started
     <div class="card_containerx">
@@ -85,6 +89,30 @@
             </div>
         </div>
     </div>
+    <center><canvas id="myChart" style="width:100%;max-width:600px;  max-height:400px;"></canvas></center>
+        <script>
+        var xValues = ["Materials", "Requested Orders", "Intransit Orders", "Completed Orders"];
+        var yValues = [@Model.Materials.Count() , @Model.ProviderRequestedMaterials.Count() , @Model.ProviderTransitMaterials.Count() , @Model.ProviderDeliveredMaterials.Count() ];
+        var barColors = ["brown", "green","blue","orange","brown"];
+
+        new Chart("myChart", {
+          type: "bar",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValues
+            }]
+          },
+          options: {
+            legend: {display: false},
+            title: {
+              display: true,
+              text: ""
+            }
+          }
+        });
+    </script>
     // Provider   Materials  Ended
 }
 @if (User.IsInRole("Seeker"))
@@ -157,6 +185,31 @@
             </div>
         </div>
     </div>
+        <center><canvas id="myChart" style="width:100%;max-width:600px;  max-height:400px;"></canvas></center>
+        <script>
+        var xValues = ["Requested Materials", "Intransit Orders", "Completed Orders"];
+        var yValues = [@Model.PendingMaterialsSeeker.Count() , @Model.ApprovedMaterialsSeeker.Count() ,@Model.CompletedMaterialsSeeker.Count() ];
+        var barColors = ["brown", "green","blue","orange","brown"];
+
+        new Chart("myChart", {
+          type: "bar",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValues
+            }]
+          },
+          options: {
+            legend: {display: false},
+            title: {
+              display: true,
+              text: ""
+            }
+          }
+        });
+    </script>
+
     // Matertial Seeker End
 }
 
@@ -193,6 +246,31 @@
             </div>
         </div>
     </div>
+
+    <center><canvas id="myChart" style="width:100%;max-width:600px;  max-height:400px;"></canvas></center>
+        <script>
+        var xValues = ["Open Orders", "Intransit Orders", "Completed Orders"];
+        var yValues = [@Model.RiderAllMaterials.Count() , @Model.RiderPickUpMaterials.Count()  , @Model.RiderDeliveredMaterials.Count()];
+        var barColors = ["brown", "green","blue","orange","brown"];
+
+        new Chart("myChart", {
+          type: "bar",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValues
+            }]
+          },
+          options: {
+            legend: {display: false},
+            title: {
+              display: true,
+              text: ""
+            }
+          }
+        });
+    </script>
     // Matertial Seeker End
 }
 <style>
