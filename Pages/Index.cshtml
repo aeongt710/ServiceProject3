@@ -2,13 +2,11 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    //Layout = null;
 }
 
-@*<div class="text-center">
-    <h1>Hire Local Workers</h1>
-    <p>Whether your job requires experience hospitality worker, security professionals, or customer service skills, <bold>SSP</bold> will source the expertise you seek.</p>
-</div>*@
 
+@*
   <div class="zcard">
     <div class="zcard-container">
         <div class="zhero-image-container">
@@ -29,25 +27,11 @@
                 </p>
             </div>
 
-@*            <ul class="zst">
-                <li class="zstli">
-                    <span>123</span>
-                    <span><a asp-page="./Warehouses/Index" style="color:azure">WAREHOUSES</a></span>
-                </li>
-                <li class="zstli">
-                    <span>123</span>
-                    <span><a asp-page="./Products/Index" style="color:azure">PRODUCTS</a></span>
-                </li>
-                <li class="zstli">
-                    <span>123</span>
-                    <span><a asp-page="./Items/Index" style="color:azure">ITEMS</a></span>
-                </li>
-            </ul>*@
+
         </div>
     </div>
 </div>
 <style>
-    <style>
 
 
 @@media (min-width: 48em) {
@@ -214,4 +198,349 @@ h1 {
 
 
         </style>
+*@
+<html>
+<center class="mt-5"><h3 style="color=#0366d6">Service Seeking Pakistan</h3></center>
+    <body>
+        <div class="container">
+            <div class="container__item landing-page-container">
+                <div class="content__wrapper">
+
+
+
+                    <p class="coords">Service Seeking Pakistan</p>
+
+                    <div class="ellipses-container">
+                        <div class="text-danger">
+                           
+                        </div>
+                        
+
+                        <div class="ellipses ellipses__outer--thin">
+
+                            <div class="ellipses ellipses__orbit">
+                                
+                            </div>
+                            <h2 class="greeting">Services</h2>
+                        </div>
+
+                        <div class="ellipses ellipses__outer--thick">Products</div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+</html>
+<style>
+
+// rem font sizing.
+html { font-size: 62.5%; }
+body { font-size: 1.4rem; } /* =14px */
+h1   { font-size: 2.4rem; } /* =24px */
+
+.container__item {
+    margin: 0 auto 40px;
+}
+
+.landing-page-container {
+    width: 100%;
+    min-height: 100%;
+    height: 90rem;
+    background-image: url('https://s29.postimg.org/vho8xb2pj/landing_bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    color: #09383E;
+}
+
+.content__wrapper {
+    max-width: 1200px;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.header {
+    width: 100%;
+    height: 2rem;
+    padding: 4.5rem 0;
+    display: block;
+}
+
+.menu-icon {
+    width: 2.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.header__item {
+    display: inline-block;
+    float: left;
+}
+
+.menu-icon__line {
+    width: 1.5rem;
+    height: 0.2rem;
+    background-color:  #0C383E;
+    display: block;
+
+    &:before,
+    &:after {
+        content: '';
+        width: 1.5rem;
+        height: 0.2rem;
+        background-color:  #0C383E;
+        display: inline-block;
+        position: relative;
+    }
+
+    &:before {
+        left: 0.5rem;
+        top: -0.6rem;
+    }
+
+    &:after {
+        top: -1.8rem;
+    }
+}
+
+.heading {
+    width: 90%;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.7rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.social-container {
+    width: 7.25rem;
+    list-style: none;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    float: right;
+
+    .social__icon {
+        float: left;
+        cursor: pointer;
+
+        &.social__icon--dr {
+          margin-left: 0.5rem;
+          
+          img {
+             height: 2rem;
+          }
+        }
+        &.social__icon--in {
+          margin-left: 0.75rem;
+          
+          img {
+             height: 2rem;
+          }
+        }
+
+        &.social__icon--fb {
+            img {
+                height: 2rem;
+                margin: 0rem;
+            }
+        }
+    }
+}
+
+.coords {
+    font-size: 1rem;
+    display: inline-block;
+    transform: rotate(-90deg) translateY(50%);
+    float: left;
+    position: relative;
+    top: 40%;
+    letter-spacing: 0.2rem;
+    left: -11.5rem;
+    margin: 0;
+}
+
+.ellipses-container {
+    width: 50rem;
+    height: 50rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+    top: 10.5rem;
+
+    .greeting {
+        position: absolute;
+        top: 11.6rem;
+        left: 13rem;
+        right: 0;
+        margin: 0 auto;
+        text-transform: uppercase;
+        letter-spacing: 4rem;
+        font-size: 2.2rem;
+        font-weight: 400;
+        opacity: 0.5;
+
+        &:after{
+            content: '';
+            width: 0.3rem;
+            height: 0.3rem;
+            border-radius: 50%;
+            display: inline-block;
+            background-color:  #0C383E;
+            position: relative;
+            top: -0.65rem;
+            left: -5.05rem;
+        }
+    }
+
+}
+
+.ellipses {
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    border-style: solid;
+}
+
+.ellipses__outer--thin {
+    width: 100%;
+    height: 100%;
+    border-width: 1px;
+    border-color: rgba(9, 56, 62, 0.1);
+    animation: ellipsesOrbit 15s ease-in-out infinite;
+
+
+    &:after {
+      content: "";
+      background-image: url('https://s29.postimg.org/5h0r4ftkn/ellipses_dial.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      opacity: 0.15;
+    }
+}
+
+.ellipses__outer--thick {
+    width: 99.5%;
+    height: 99.5%;
+    border-color: #09383E transparent;
+    border-width: 2px;
+    transform: rotate(-45deg);
+    animation: ellipsesRotate 15s ease-in-out infinite;
+}
+
+.ellipses__orbit {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-width: 2px;
+    border-color: #09383E;
+    top: 5rem;
+    right: 6.75rem;
+
+    &:before {
+        content: '';
+        width: 0.7rem;
+        height: 0.7rem;
+        border-radius: 50%;
+        display: inline-block;
+        background-color: #09383E;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+    }
+}
+
+.scroller {
+    width: 7.5rem;
+    display: inline-block;
+    float: right;
+    position: relative;
+    top: -15%;
+    transform: translateY(50%);
+    overflow: hidden;
+
+
+    .page-title {
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 0.5rem;
+        display: inline-block;
+        float: left;
+        margin-top: 1rem;
+    }
+
+    .timeline {
+        width: 1.5rem;
+        height: 9rem;
+        display: inline-block;
+        float: right;
+
+        .timeline__unit {
+            width: 100%;
+            height: 0.1rem;
+            display: block;
+            background-color:  #0C383E;
+            margin: 0 0 2rem;
+            opacity: 0.2;
+
+            &.timeline__unit--active {
+                opacity: 1;
+
+                &:after {
+                    opacity: 0.2;
+                }
+            }
+
+            &:after {
+                content: '';
+                width: 70%;
+                height: 0.1rem;
+                display: block;
+                position: relative;
+                float: right;
+                background-color:  #0C383E;
+                top: 1rem;
+            }
+        }
+    }
+}
+
+
+@@keyframes ellipsesRotate {
+    0% {
+        transform: rotate(-45deg);
+    }
+
+    100% {
+        transform: rotate(-405deg);
+    }
+}
+
+@@keyframes ellipsesOrbit {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
 </style>
