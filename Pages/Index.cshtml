@@ -1,11 +1,21 @@
 ﻿@page
 @model IndexModel
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Home page";
     //Layout = null;
 }
+<script src="~/js//home.js"></script>
+<link rel="stylesheet" href="~/css/home.css" />
 
-
+<style>
+    .footer{
+        position: relative;
+    }
+</style>
 @*
   <div class="zcard">
     <div class="zcard-container">
@@ -199,348 +209,140 @@ h1 {
 
         </style>
 *@
-<html>
-<center class="mt-5"><h3 style="color=#0366d6">Service Seeking Pakistan</h3></center>
-    <body>
+
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <!--========= Basic Page Needs =========-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--========== Specific Meta ==========-->
+    <meta name="description" content="Online Education template Based on HTML5.">
+    <meta name="keywords" content="HTML5, Template, Design, Development, education, edulab, online cources, training, online education, best education template">
+
+    <!--======== Page Title===========-->
+    <title>Template</title>
+    
+    <!--========== Favicons =========-->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    
+    <!--======== Font icon Css ============-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="css/themify-icons.css" rel="stylesheet">
+    
+    <!--======= Bootstrap Main Css =============-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!--====== Plugins Css ================-->
+    <link href="css/plugins.css" rel="stylesheet">
+
+    <!--====== Custom CSS for themes =======-->
+    <link href="css/style.css" rel="stylesheet">
+    
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+    <!--====Header Area
+    ====================================-->
+
+    
+    <!--====Home Search Section
+    ====================================-->
+    <div id="home-search-section" class="home-search-section-area bg-image home-header-one" style="background-image: url(https://images.vexels.com/media/users/3/125831/preview2/4f35e00f8e02017acd9086b209c9897b-dibujos-animados-fondo-de-las-nubes.jpg);">
         <div class="container">
-            <div class="container__item landing-page-container">
-                <div class="content__wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="welcome-text text-center tb">
+                        <div class="tb-cell">
+                            <h1>Lorem ipsum dolor .</h1>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio ullam, maiores consequatur voluptates at quia, magnam itaque quidem omnis quaerat quas enim quod architecto et sed reiciendis facere repellat fuga!</p>
+                            <form class="product-search-form" action="#" method="get">
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    
+                                }
+                                else
+                                {
+                                    <a class="btn btn-default btn-primary" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                                }
 
-
-
-                    <p class="coords">Service Seeking Pakistan</p>
-
-                    <div class="ellipses-container">
-                        <div class="text-danger">
-                           
-                        </div>
-                        
-
-                        <div class="ellipses ellipses__outer--thin">
-
-                            <div class="ellipses ellipses__orbit">
-                                
-                            </div>
-                            <h2 class="greeting">Services</h2>
-                        </div>
-
-                        <div class="ellipses ellipses__outer--thick">Products</div>
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </body>
+                            </form><!--/.product-search-form-->
+                        </div><!--/.tb-cell-->
+                    </div><!--/.welcome-text-->
+                </div><!--/.col-lg-12-->
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </div><!--/#home-search-section-->
+      
+    <!--====Services Section
+    ====================================-->
+    <section id="services-section" class="services-section-area s-pd1">
+		<div class="container">
+			<div class="row justify-content-md-center">
+				<div class="col-lg-8">
+				    <div class="section-heading-area text-center">
+					    <h2 class="section-heading text-capitalize">Lorem ipsum dolor .</h2>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, quo. Ipsam ratione nostrum doloribus dolorem sunt. Quas voluptatum voluptates quod officiis incidunt deserunt, animi, autem, perferendis quia asperiores assumenda nihil?</p>
+				    </div><!--/.section-heading-area--> 
+				</div><!--/.col-lg-8-->
+			</div><!--/.row-->
+			<div class="row">
+				<div class="col-lg-4 col-md-4">
+					<div class="single-service text-center">
+                        <div class="icon">
+				            <img src="https://us.123rf.com/450wm/rastudio/rastudio1708/rastudio170805345/84323173-letras-abc-en-la-pizarra-dibujo-icono-del-vector-aislado-en-el-fondo-dibujado-a-mano-letras-abc-en-e.jpg?ver=6" width="50px" height="50px" alt="icon">
+				        </div>
+						<h3>Lorem ipsum dolor .</h3>
+						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid saepe consequatur nam doloremque cum optio numquam molestiae.</p>
+					</div><!--/.single-service-->
+				</div><!--/.col-lg-4-->
+				<div class="col-lg-4 col-md-4">
+					<div class="single-service text-center">
+                        <div class="icon">
+				            <img src="http://prints.ultracoloringpages.com/4d4e53262cd35c980ad27cdb71c14b4c.png" width="50px" height="50px" alt="icon">
+				        </div><!--/.row-->
+						<h3>Lorem ipsum dolor .</h3>
+						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus nobis.</p>
+					</div><!--/.single-service-->
+				</div><!--/.col-lg-4-->
+				<div class="col-lg-4 col-md-4">
+					<div class="single-service text-center">
+                        <div class="icon">
+				            <img src="https://static8.depositphotos.com/1007168/932/i/950/depositphotos_9323258-stock-photo-outlined-magnifying-glass.jpg" width="50px" height="50px" alt="icon">
+				        </div><!--/.row-->
+						<h3>Lorem ipsum dolor .</h3>
+						<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque optio sequi, quos explicabo corrupti quo.</p>
+					</div><!--/.single-service-->
+				</div><!--/.col-lg-4-->	
+			</div><!--/.row-->
+		</div><!--/.container-->
+	</section><!--/#services-section-->
+   
+    <!--====Courses Section
+    ====================================-->
+   
+    
+    <!-- All JS files are included here.
+	============================================== -->
+   
+    <!-- jQuery Latest Version -->
+    <script src="js/jquery-v3.2.1.min.js"></script>
+    <!-- Popper JS -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap framework JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- All JS plugins included in this file. -->
+    <script src="js/plugins.js"></script>
+    <!-- Main JS file that contents all jQuery Plugins activation. -->
+    <script src="js/main.js"></script>
+</body>
 </html>
-<style>
 
-// rem font sizing.
-html { font-size: 62.5%; }
-body { font-size: 1.4rem; } /* =14px */
-h1   { font-size: 2.4rem; } /* =24px */
+<script>
 
-.container__item {
-    margin: 0 auto 40px;
-}
-
-.landing-page-container {
-    width: 100%;
-    min-height: 100%;
-    height: 90rem;
-    background-image: url('https://s29.postimg.org/vho8xb2pj/landing_bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom;
-    overflow: hidden;
-    font-family: 'Montserrat', sans-serif;
-    color: #09383E;
-}
-
-.content__wrapper {
-    max-width: 1200px;
-    width: 90%;
-    height: 100%;
-    margin: 0 auto;
-    position: relative;
-}
-
-.header {
-    width: 100%;
-    height: 2rem;
-    padding: 4.5rem 0;
-    display: block;
-}
-
-.menu-icon {
-    width: 2.5rem;
-    height: 1.5rem;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.header__item {
-    display: inline-block;
-    float: left;
-}
-
-.menu-icon__line {
-    width: 1.5rem;
-    height: 0.2rem;
-    background-color:  #0C383E;
-    display: block;
-
-    &:before,
-    &:after {
-        content: '';
-        width: 1.5rem;
-        height: 0.2rem;
-        background-color:  #0C383E;
-        display: inline-block;
-        position: relative;
-    }
-
-    &:before {
-        left: 0.5rem;
-        top: -0.6rem;
-    }
-
-    &:after {
-        top: -1.8rem;
-    }
-}
-
-.heading {
-    width: 90%;
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0;
-    line-height: 1.7rem;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.social-container {
-    width: 7.25rem;
-    list-style: none;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    float: right;
-
-    .social__icon {
-        float: left;
-        cursor: pointer;
-
-        &.social__icon--dr {
-          margin-left: 0.5rem;
-          
-          img {
-             height: 2rem;
-          }
-        }
-        &.social__icon--in {
-          margin-left: 0.75rem;
-          
-          img {
-             height: 2rem;
-          }
-        }
-
-        &.social__icon--fb {
-            img {
-                height: 2rem;
-                margin: 0rem;
-            }
-        }
-    }
-}
-
-.coords {
-    font-size: 1rem;
-    display: inline-block;
-    transform: rotate(-90deg) translateY(50%);
-    float: left;
-    position: relative;
-    top: 40%;
-    letter-spacing: 0.2rem;
-    left: -11.5rem;
-    margin: 0;
-}
-
-.ellipses-container {
-    width: 50rem;
-    height: 50rem;
-    border-radius: 50%;
-    margin: 0 auto;
-    position: relative;
-    top: 10.5rem;
-
-    .greeting {
-        position: absolute;
-        top: 11.6rem;
-        left: 13rem;
-        right: 0;
-        margin: 0 auto;
-        text-transform: uppercase;
-        letter-spacing: 4rem;
-        font-size: 2.2rem;
-        font-weight: 400;
-        opacity: 0.5;
-
-        &:after{
-            content: '';
-            width: 0.3rem;
-            height: 0.3rem;
-            border-radius: 50%;
-            display: inline-block;
-            background-color:  #0C383E;
-            position: relative;
-            top: -0.65rem;
-            left: -5.05rem;
-        }
-    }
-
-}
-
-.ellipses {
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    border-style: solid;
-}
-
-.ellipses__outer--thin {
-    width: 100%;
-    height: 100%;
-    border-width: 1px;
-    border-color: rgba(9, 56, 62, 0.1);
-    animation: ellipsesOrbit 15s ease-in-out infinite;
-
-
-    &:after {
-      content: "";
-      background-image: url('https://s29.postimg.org/5h0r4ftkn/ellipses_dial.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      position: absolute;
-      opacity: 0.15;
-    }
-}
-
-.ellipses__outer--thick {
-    width: 99.5%;
-    height: 99.5%;
-    border-color: #09383E transparent;
-    border-width: 2px;
-    transform: rotate(-45deg);
-    animation: ellipsesRotate 15s ease-in-out infinite;
-}
-
-.ellipses__orbit {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-width: 2px;
-    border-color: #09383E;
-    top: 5rem;
-    right: 6.75rem;
-
-    &:before {
-        content: '';
-        width: 0.7rem;
-        height: 0.7rem;
-        border-radius: 50%;
-        display: inline-block;
-        background-color: #09383E;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-
-    }
-}
-
-.scroller {
-    width: 7.5rem;
-    display: inline-block;
-    float: right;
-    position: relative;
-    top: -15%;
-    transform: translateY(50%);
-    overflow: hidden;
-
-
-    .page-title {
-        font-family: 'Playfair Display', serif;
-        letter-spacing: 0.5rem;
-        display: inline-block;
-        float: left;
-        margin-top: 1rem;
-    }
-
-    .timeline {
-        width: 1.5rem;
-        height: 9rem;
-        display: inline-block;
-        float: right;
-
-        .timeline__unit {
-            width: 100%;
-            height: 0.1rem;
-            display: block;
-            background-color:  #0C383E;
-            margin: 0 0 2rem;
-            opacity: 0.2;
-
-            &.timeline__unit--active {
-                opacity: 1;
-
-                &:after {
-                    opacity: 0.2;
-                }
-            }
-
-            &:after {
-                content: '';
-                width: 70%;
-                height: 0.1rem;
-                display: block;
-                position: relative;
-                float: right;
-                background-color:  #0C383E;
-                top: 1rem;
-            }
-        }
-    }
-}
-
-
-@@keyframes ellipsesRotate {
-    0% {
-        transform: rotate(-45deg);
-    }
-
-    100% {
-        transform: rotate(-405deg);
-    }
-}
-
-@@keyframes ellipsesOrbit {
-    0% {
-        transform: rotate(0);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-</style>
+</script>

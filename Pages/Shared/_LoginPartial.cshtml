@@ -2,7 +2,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav">
+<ul class="navbar-nav" >
     @*   @if (SignInManager.IsSignedIn(User))
 
         {
@@ -37,11 +37,11 @@
     {
             @if (User.IsInRole("Seeker"))
             {
-               <div class="checker">Seeker</div>
+               <div class="checker" style="color:#0366d6;">Seeker</div>
             }
             @if (User.IsInRole("Provider"))
             {
-              <div class="checker">Provider</div>
+              <div class="checker style="color:#0366d6;"">Provider</div>
             }
             @if (User.IsInRole("Admin"))
             {
@@ -73,7 +73,7 @@
     else
     {
         <div class="dropdown">
-            <button class="btn  dropdown-toggle" style="background-color:none;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn  dropdown-toggle" style="color:#0366d6;background-color:none;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Login
             </button>
             <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
